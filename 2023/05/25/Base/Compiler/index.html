@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+
+<html class="article-header-style-default">
+<head>
+	
+	<title>编译原理 - Origin_OvO Blog</title>
+	<meta charset="utf-8">
+	
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	
+	<meta name="description" content="编译原理2.文法和语言的基本知识2.1程序设计语言的描述三要素  语法：对语言结构的定义 语义：描述了语言的含义 语用：从使用的角度描述语言  2.2字母表和符号串的基本概念2.2.1基本概念字母表 字母表是元素的非空有穷集合，字母表中的元素可以是字母、数字或其他符号  $\sum$&#x3D;{a,b,c}，$\theta$&#x3D;{0,1}，$\sum$和$\theta$都是字母表 符号（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译原理">
+<meta property="og:url" content="http://example.com/2023/05/25/Base/Compiler/index.html">
+<meta property="og:site_name" content="Origin_OvO Blog">
+<meta property="og:description" content="编译原理2.文法和语言的基本知识2.1程序设计语言的描述三要素  语法：对语言结构的定义 语义：描述了语言的含义 语用：从使用的角度描述语言  2.2字母表和符号串的基本概念2.2.1基本概念字母表 字母表是元素的非空有穷集合，字母表中的元素可以是字母、数字或其他符号  $\sum$&#x3D;{a,b,c}，$\theta$&#x3D;{0,1}，$\sum$和$\theta$都是字母表 符号（">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-25T13:27:54.893Z">
+<meta property="article:modified_time" content="2023-06-07T12:44:47.543Z">
+<meta property="article:author" content="Origin_OvO">
+<meta name="twitter:card" content="summary">
+
+	<meta name="theme-color" content="#5e72e4">
+	<meta name="theme-color-rgb" content="94,114,228">
+	<meta name="theme-color-origin" content="#5e72e4">
+	<meta name="argon-enable-custom-theme-color" content="true">
+	<meta name="theme-card-radius" content="4">
+	<meta name="theme-version" content="1.0.2">
+	<link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+
+	
+<link rel="stylesheet" href="/assets/argon_css_merged.css">
+
+	
+<link rel="stylesheet" href="/style.css">
+
+	
+<link rel="stylesheet" href="//fonts.loli.net/css?family=Open+Sans:300,400,600,700|Noto+Serif+SC:300,600&display=swap.css">
+
+	
+<script src="/assets/argon_js_merged.js"></script>
+
+	
+<script src="/assets/js/argon.min.js"></script>
+
+	
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+	
+
+	<script>
+		var argonConfig = {
+			language: "zh_CN",
+			
+				zoomify: {
+					duration: 200,
+					easing: "cubic-bezier(0.4,0,0,1)",
+					scale: 0.9
+				},
+			
+			pangu: "false",
+			
+				lazyload: {
+					threshold: 800,
+					effect: "fadeIn"
+				},
+			
+			disable_pjax: false,
+			headroom: false
+		}
+	</script>
+	<script>
+		var darkmodeAutoSwitch = "false";
+		function setDarkmode(enable){
+			if (enable == true){
+				$("html").addClass("darkmode");
+			}else{
+				$("html").removeClass("darkmode");
+			}
+			$(window).trigger("scroll");
+		}
+		function toggleDarkmode(){
+			if ($("html").hasClass("darkmode")){
+				setDarkmode(false);
+				sessionStorage.setItem("Argon_Enable_Dark_Mode", "false");
+			}else{
+				setDarkmode(true);
+				sessionStorage.setItem("Argon_Enable_Dark_Mode", "true");
+			}
+		}
+		if (sessionStorage.getItem("Argon_Enable_Dark_Mode") == "true"){
+			setDarkmode(true);
+		}
+		function toggleDarkmodeByPrefersColorScheme(media){
+			if (sessionStorage.getItem('Argon_Enable_Dark_Mode') == "false" || sessionStorage.getItem('Argon_Enable_Dark_Mode') == "true"){
+				return;
+			}
+			if (media.matches){
+				setDarkmode(true);
+			}else{
+				setDarkmode(false);
+			}
+		}
+		function toggleDarkmodeByTime(){
+			if (sessionStorage.getItem('Argon_Enable_Dark_Mode') == "false" || sessionStorage.getItem('Argon_Enable_Dark_Mode') == "true"){
+				return;
+			}
+			let hour = new Date().getHours();
+			if (hour < 7 || hour >= 22){
+				setDarkmode(true);
+			}else{
+				setDarkmode(false);
+			}
+		}
+		if (darkmodeAutoSwitch == 'system'){
+			var darkmodeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+			darkmodeMediaQuery.addListener(toggleDarkmodeByPrefersColorScheme);
+			toggleDarkmodeByPrefersColorScheme(darkmodeMediaQuery);
+		}
+		if (darkmodeAutoSwitch == 'time'){
+			toggleDarkmodeByTime();
+		}
+		if (darkmodeAutoSwitch == 'alwayson'){
+			setDarkmode(true);
+		}
+
+		function toggleAmoledDarkMode(){
+			$("html").toggleClass("amoled-dark");
+			if ($("html").hasClass("amoled-dark")){
+				localStorage.setItem("Argon_Enable_Amoled_Dark_Mode", "true");
+			}else{
+				localStorage.setItem("Argon_Enable_Amoled_Dark_Mode", "false");
+			}
+		}
+		if (localStorage.getItem("Argon_Enable_Amoled_Dark_Mode") == "true"){
+			$("html").addClass("amoled-dark");
+		}else if (localStorage.getItem("Argon_Enable_Amoled_Dark_Mode") == "false"){
+			$("html").removeClass("amoled-dark");
+		}
+	</script>
+	<script>
+		if (navigator.userAgent.indexOf("Safari") !== -1 && navigator.userAgent.indexOf("Chrome") === -1){
+			$("html").addClass("using-safari");
+		}
+	</script>
+
+	
+		
+<script src="/assets/vendor/smoothscroll/smoothscroll1.js"></script>
+
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+
+<style id="themecolor_css">
+	
+	:root{
+		--themecolor: #5e72e4;
+		--themecolor-dark0: #5368E2;
+		--themecolor-dark: #485FE0;
+		--themecolor-dark2: #324CDD;
+		--themecolor-dark3: #233DD2;
+		--themecolor-light: #8A98EB;
+		--themecolor-rgbstr: 94,114,228;
+		--themecolor-gradient: linear-gradient(150deg,var(--themecolor-light) 15%, var(--themecolor) 70%, var(--themecolor-dark0) 94%);
+
+	}
+</style>
+<style id="theme_cardradius_css">
+	:root{
+		--card-radius: 4px;
+	}
+</style>
+
+<body>
+<div id="toolbar">
+	<header class="header-global">
+		<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light bg-primary headroom--not-bottom headroom--not-top headroom--pinned">
+			<div class="container">
+				
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand" href="/">Origin_OvO Blog</a>
+				<div class="navbar-collapse collapse" id="navbar_global">
+					<div class="navbar-collapse-header">
+						<div class="row">
+							<div class="col-6 collapse-brand"></div>
+							<div class="col-6 collapse-close">
+								<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+									<span></span>
+									<span></span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<ul id="navbar_search_btn_mobile" class="navbar-nav align-items-lg-center ml-lg-auto">
+						<li class="nav-item" data-toggle="modal" data-target="#argon_search_modal" style="padding-left: 5px;">
+							<a class="nav-link nav-link-icon">
+								<i class="fa fa-search"></i>
+								<span class="nav-link-inner--text d-lg-none">搜索</span>
+							</a>
+						</li>
+					</ul>
+					
+							<ul class='navbar-nav navbar-nav-hover align-items-lg-center'>
+								
+										<li class='nav-item'>
+											<a href='/home' class='nav-link' >
+												<i class='ni ni-book-bookmark d-lg-none'></i>
+												<span class='nav-link-inner--text'>首页</span>
+											</a>
+											
+										</li>
+									
+										<li class='nav-item dropdown'>
+											<a href='' class='nav-link' onclick='return false;' data-toggle='dropdown' no-pjax>
+												<i class='ni ni-book-bookmark d-lg-none'></i>
+												<span class='nav-link-inner--text'>二级菜单</span>
+											</a>
+											
+													<div class="dropdown-menu">
+														
+															<a href='/' class='dropdown-item'>归档</a>
+														
+													</div>
+												
+										</li>
+									
+							</ul>
+						
+					<ul class="navbar-nav align-items-lg-center ml-lg-auto">
+						<li class="nav-item" data-toggle="modal" data-target="#argon_search_modal" id="navbar_search_btn_pc">
+							<a class="nav-link nav-link-icon">
+								<i class="fa fa-search"></i>
+								<span class="nav-link-inner--text d-lg-none">搜索</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				
+				<div id="navbar_menu_mask" data-toggle="collapse" data-target="#navbar_global"></div>
+			</div>
+		</nav>
+	</header>
+</div>
+<div class="modal fade" id="argon_search_modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">搜索</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<!-- TODO -->
+<div class="form-group mb-3">
+	<div class="input-group input-group-alternative">
+		<div class="input-group-prepend">
+			<span class="input-group-text"><i class="fa fa-search"></i></span>
+		</div>
+		<input id="local-search-input" class="form-control" placeholder="搜索什么..." type="text"  autocomplete="off" data-search.path="search.xml" data-config.root="/">
+	</div>
+	<div id="local-search-result"></div>
+</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--Banner-->
+<section id="banner" class="banner section section-lg section-shaped">
+	<div class="shape shape-style-1 shape-primary">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+
+	
+	<div id="banner_container" class="banner-container container text-center">
+		
+			<div class="banner-title text-white"><span class="banner-title-inner">Origin_OvO Blog</span>
+		
+		</div>
+	</div>
+	
+		<style>
+			section.banner{
+				background-image: url(/assets/img/banner.jpg) !important;
+			}
+		</style>
+	
+</section>
+
+
+	<style>
+		#content:before {
+			content: '';
+			display: block;
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: -2;
+			background: url(/assets/img/banner.jpg);
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			opacity: 1;
+			transition: opacity .5s ease;
+		}
+		html.darkmode #content:before{
+			filter: brightness(0.65);
+		}
+		
+			#content:after {
+				content: '';
+				display: block;
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				z-index: -2;
+				background: url(/assets/img/banner.jpg);
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+				opacity: 0;
+				transition: opacity .5s ease;
+			}
+			html.darkmode #content:after {
+				opacity: 1;
+			}
+			html.darkmode #content:before {
+				opacity: 0;
+			}
+		
+		
+			#banner, #banner .shape {
+				background: transparent !important;
+			}
+		
+	</style>
+
+
+
+
+<div id="float_action_buttons" class="float-action-buttons fabtns-unloaded">
+	<button id="fabtn_toggle_sides" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip-move-to-left="移至左侧" tooltip-move-to-right="移至右侧">
+		<span class="btn-inner--icon fabtn-show-on-right"><i class="fa fa-caret-left"></i></span>
+		<span class="btn-inner--icon fabtn-show-on-left"><i class="fa fa-caret-right"></i></span>
+	</button>
+	<button id="fabtn_back_to_top" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Back To Top" tooltip="回到顶部">
+		<span class="btn-inner--icon"><i class="fa fa-angle-up"></i></span>
+	</button>
+	<button id="fabtn_go_to_comment" class="btn btn-icon btn-neutral fabtn shadow-sm d-none" type="button" <-% theme.fab_show_gotocomment_button ? "" : "style='display: none;'"  aria-label="Comment" tooltip="评论">
+		<span class="btn-inner--icon"><i class="fa fa-comment-o"></i></span>
+	</button>
+	<button id="fabtn_toggle_darkmode" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" <-% theme.fab_show_darkmode_button ? "" : "style='display: none;'"  aria-label="Toggle Darkmode" tooltip-darkmode="夜间模式" tooltip-blackmode="暗黑模式" tooltip-lightmode="日间模式">
+		<span class="btn-inner--icon"><i class="fa fa-moon-o"></i><i class='fa fa-lightbulb-o'></i></span>
+	</button>
+	<button id="fabtn_toggle_blog_settings_popup" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" <-% theme.fab_show_settings_button ? "" : "style='display: none;'"  aria-label="Open Blog Settings Menu" tooltip="设置">
+		<span class="btn-inner--icon"><i class="fa fa-cog"></i></span>
+	</button>
+	<div id="fabtn_blog_settings_popup" class="card shadow-sm" style="opacity: 0;" aria-hidden="true">
+		<div id="close_blog_settings"><i class="fa fa-close"></i></div>
+		<div class="blog-setting-item mt-3">
+			<div style="transform: translateY(-4px);"><div id="blog_setting_toggle_darkmode_and_amoledarkmode" tooltip-switch-to-darkmode="切换到夜间模式" tooltip-switch-to-blackmode="切换到暗黑模式"><span>夜间模式</span><span>暗黑模式</span></div></div>
+			<div style="flex: 1;"></div>
+			<label id="blog_setting_darkmode_switch" class="custom-toggle">
+				<span class="custom-toggle-slider rounded-circle"></span>
+			</label>
+		</div>
+		<div class="blog-setting-item mt-3">
+			<div style="flex: 1;">字体</div>
+			<div>
+				<button id="blog_setting_font_sans_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-left">Sans Serif</button><button id="blog_setting_font_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-right">Serif</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mt-3">
+			<div style="flex: 1;">阴影</div>
+			<div>
+				<button id="blog_setting_shadow_small" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-left">浅阴影</button><button id="blog_setting_shadow_big" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-right">深阴影</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mt-3 mb-3">
+			<div style="flex: 1;">滤镜</div>
+			<div id="blog_setting_filters" class="ml-3">
+				<button id="blog_setting_filter_off" type="button" class="blog-setting-filter-btn ml-0" filter-name="off">关闭</button>
+				<button id="blog_setting_filter_sunset" type="button" class="blog-setting-filter-btn" filter-name="sunset">日落</button>
+				<button id="blog_setting_filter_darkness" type="button" class="blog-setting-filter-btn" filter-name="darkness">暗化</button>
+				<button id="blog_setting_filter_grayscale" type="button" class="blog-setting-filter-btn" filter-name="grayscale">灰度</button>
+			</div>
+		</div>
+		<div class="blog-setting-item mb-3">
+			<div id="blog_setting_card_radius_to_default" style="cursor: pointer;" tooltip="恢复默认">圆角</div>
+			<div style="flex: 1;margin-left: 20px;margin-right: 8px;transform: translateY(2px);">
+				<div id="blog_setting_card_radius"></div>
+			</div>
+		</div>
+		
+			<div class="blog-setting-item mt-1 mb-3">
+				<div style="flex: 1;">主题色</div>
+				<div id="theme-color-picker" class="ml-3"></div>
+			</div>
+		
+	</div>
+	<button id="fabtn_open_sidebar" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Open Sidebar Menu" tooltip="菜单">
+		<span class="btn-inner--icon"><i class="fa fa-bars"></i></span>
+	</button>
+	<button id="fabtn_reading_progress" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip="阅读进度">
+		<div id="fabtn_reading_progress_bar" style="width: 0%;"></div>
+		<span id="fabtn_reading_progress_details">0%</span>
+	</button>
+</div>
+
+<div id="content" class="site-content">
+
+
+
+
+
+
+
+
+
+<div class="page-information-card-container">
+	
+</div>
+
+<div id="sidebar_mask"></div>
+<aside id="leftbar" class="leftbar widget-area" role="complementary">
+		
+		<div id="leftbar_part1" class="widget widget_search card bg-white shadow-sm border-0">
+			<div class="leftbar-banner card-body">
+				<span class="leftbar-banner-title text-white">Origin_OvO Blog</span>
+				
+				
+			</div>
+			
+			
+				<ul id='leftbar_part1_menu' class='leftbar-menu'>
+					<li class='leftbar-menu-item'><a href='/'>首页</a></li><li class='leftbar-menu-item'><a href='/archives'>归档</a></li><li class='leftbar-menu-item leftbar-menu-item-haschildren'><a no-pjax onclick='return false;'>二级菜单</a><ul class='leftbar-menu-item leftbar-menu-subitem shadow-sm'><li class='leftbar-menu-item leftbar-menu-item-haschildren'><a no-pjax onclick='return false;'>三级菜单</a><ul class='leftbar-menu-item leftbar-menu-subitem shadow-sm'><li class='leftbar-menu-item'><a href='/'>首页</a></li></ul></li></ul></li>
+				</ul>
+			
+			<div class="card-body text-center leftbar-search-button">
+				<button id="leftbar_search" class="btn btn-secondary btn-lg active btn-sm btn-block border-0" role="button" data-toggle="modal" data-target="#argon_search_modal" >
+					<i class="menu-item-icon fa fa-search mr-0"></i> 搜索
+				</button>
+			</div>
+		</div>
+		<div id="leftbar_part2" class="widget widget_search card bg-white shadow-sm border-0">
+			<div id="leftbar_part2_inner" class="card-body">
+				
+				<div class="nav-wrapper" style="padding-top: 5px;">
+	                <ul class="nav nav-pills nav-fill" role="tablist">
+						
+							<li class="nav-item sidebar-tab-switcher">
+								<a class="active show" id="leftbar_tab_catalog_btn" data-toggle="tab" href="#leftbar_tab_catalog" role="tab" aria-controls="leftbar_tab_catalog" no-pjax>文章目录</a>
+							</li>
+						
+						<li class="nav-item sidebar-tab-switcher">
+							<a class="" id="leftbar_tab_overview_btn" data-toggle="tab" href="#leftbar_tab_overview" role="tab" aria-controls="leftbar_tab_overview" no-pjax>站点概览</a>
+						</li>
+	                </ul>
+				</div>
+				<div>
+					<div class="tab-content" style="padding: 10px 10px 0 10px;">
+						
+							<div class="tab-pane fade active show" id="leftbar_tab_catalog" role="tabpanel" aria-labelledby="leftbar_tab_catalog_btn">
+								<div id="leftbar_catalog"></div>
+								<script type="text/javascript">
+									$(function () {
+										$(document).headIndex({
+											articleWrapSelector: '#post_content',
+											indexBoxSelector: '#leftbar_catalog',
+											subItemBoxClass: "index-subItem-box",
+											itemClass: "index-item",
+											linkClass: "index-link",
+											offset: 80,
+										});
+									})
+								</script>
+								
+							</div>
+						
+						<div class="tab-pane fade text-center" id="leftbar_tab_overview" role="tabpanel" aria-labelledby="leftbar_tab_overview_btn">
+							<img id="leftbar_overview_author_image" src="/assets/img/auther.jpg" class="img-fluid rounded-circle shadow-sm" style="width: 100px;" alt="avatar">
+							<h6 id="leftbar_overview_author_name">Origin_OvO Blog</h6>
+							<nav class="site-state">
+								<div class="site-state-item site-state-posts">
+									<a href="/archives">
+										<span class="site-state-item-count">75</span>
+										<span class="site-state-item-name">文章</span>
+									</a>
+								</div>
+								<div class="site-state-item site-state-categories">
+									<a data-toggle="modal" data-target="#blog_categories">
+										<span class="site-state-item-count">0</span>
+										<span class="site-state-item-name">分类</span>
+									</a>
+								</div>      
+								<div class="site-state-item site-state-tags">
+									<a data-toggle="modal" data-target="#blog_tags">
+										<span class="site-state-item-count">0</span>
+										<span class="site-state-item-name">标签</span>
+									</a>
+								</div>
+							</nav>
+							
+									<div class="site-author-links">
+										
+											<div class='site-author-links-item'>
+												<a href="/" rel='noopener' target='_blank'>aaa</a>
+											</div>
+										
+											<div class='site-author-links-item'>
+												<a href="/" rel='noopener' target='_blank'>bbb</a>
+											</div>
+										
+											<div class='site-author-links-item'>
+												<a href="/" rel='noopener' target='_blank'>ccc</a>
+											</div>
+										
+									</div>
+								
+							
+									<div class='site-friend-links'>
+										<div class='site-friend-links-title'><i class='fa fa-fw fa-link'></i> Links</div>
+										<ul class='site-friend-links-ul'>
+											
+												<li class='site-friend-links-item'>
+													<a href='/' rel='noopener' target='_blank'>aaa</a>
+												</li>
+											
+												<li class='site-friend-links-item'>
+													<a href='/' rel='noopener' target='_blank'>bbb</a>
+												</li>
+											
+												<li class='site-friend-links-item'>
+													<a href='/' rel='noopener' target='_blank'>ccc</a>
+												</li>
+											
+										</ul>
+									</div>
+								
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</aside>
+<div class="modal fade" id="blog_categories" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">分类</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="blog_tags" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">标签</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
+		
+		
+			
+	<article class="post post-full card bg-white shadow-sm border-0 ">
+	<header class="post-header text-center">
+		
+		<a class="post-title" href="/2023/05/25/Base/Compiler/">编译原理</a>
+		<div class="post-meta">
+			
+						
+						<div class="post-meta-detail post-meta-detail-time">
+							<i class="fa fa-clock-o" aria-hidden="true"></i>
+							<time title="发布于 2023-5-25 21:27:54 | 编辑于 2023-6-7 20:44:47">2023-5-25 21:27
+							</time>
+						</div>
+					
+						
+							<div class="post-meta-devide">|</div>
+						
+						<div class="post-meta-detail post-meta-detail-words">
+							<i class="fa fa fa-book" aria-hidden="true"></i>
+							<span id="busuanzi_container_page_pv">
+								阅读<span id="busuanzi_value_page_pv"></span>次
+							</span>
+						</div>
+					
+						
+							<div class="post-meta-devide">|</div>
+						
+						<div class="post-meta-detail post-meta-detail-words">
+							<i class="fa fa-file-word-o" aria-hidden="true"></i>
+							4.9k 字
+						</div>
+					
+						
+							<div class="post-meta-devide">|</div>
+						
+						<div class="post-meta-detail post-meta-detail-readingtime">
+							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+							18 分钟
+						</div>
+					
+		</div>
+		
+	</header>
+
+	<div class="post-content" id="post_content">
+		<h1 id="编译原理"><a href="#编译原理" class="headerlink" title="编译原理"></a>编译原理</h1><h2 id="2-文法和语言的基本知识"><a href="#2-文法和语言的基本知识" class="headerlink" title="2.文法和语言的基本知识"></a>2.文法和语言的基本知识</h2><h3 id="2-1程序设计语言的描述"><a href="#2-1程序设计语言的描述" class="headerlink" title="2.1程序设计语言的描述"></a>2.1程序设计语言的描述</h3><p>三要素</p>
+<ol>
+<li>语法：对语言结构的定义</li>
+<li>语义：描述了语言的含义</li>
+<li>语用：从使用的角度描述语言</li>
+</ol>
+<h3 id="2-2字母表和符号串的基本概念"><a href="#2-2字母表和符号串的基本概念" class="headerlink" title="2.2字母表和符号串的基本概念"></a>2.2字母表和符号串的基本概念</h3><h4 id="2-2-1基本概念"><a href="#2-2-1基本概念" class="headerlink" title="2.2.1基本概念"></a>2.2.1基本概念</h4><h5 id="字母表"><a href="#字母表" class="headerlink" title="字母表"></a>字母表</h5><blockquote>
+<p>字母表是元素的<font color = 'yellow'>非空</font>有穷集合，字母表中的元素可以是字母、数字或其他符号</p>
+</blockquote>
+<p>$\sum$&#x3D;{a,b,c}，$\theta$&#x3D;{0,1}，$\sum$和$\theta$都是字母表</p>
+<h5 id="符号（字符）"><a href="#符号（字符）" class="headerlink" title="符号（字符）"></a>符号（字符）</h5><blockquote>
+<p>字母表中的元素称为符号（字符）</p>
+</blockquote>
+<h5 id="符号串"><a href="#符号串" class="headerlink" title="符号串"></a>符号串</h5><blockquote>
+<p>符号的有穷序列称为符号串</p>
+</blockquote>
+<p>空符号串用$\varepsilon$表示，$|\varepsilon |$&#x3D;0</p>
+<h4 id="2-2-2符号串的运算"><a href="#2-2-2符号串的运算" class="headerlink" title="2.2.2符号串的运算"></a>2.2.2符号串的运算</h4><h5 id="符号串的连接"><a href="#符号串的连接" class="headerlink" title="符号串的连接"></a>符号串的连接</h5><p>假设有符号串x&#x3D;abc，y&#x3D;10a，则定义符号串的连接xy&#x3D;abc10a，yx&#x3D;10aabc，类似于字符串的拼接</p>
+<h5 id="集合的乘积"><a href="#集合的乘积" class="headerlink" title="集合的乘积"></a>集合的乘积</h5><p>A，B是符号串的集合，则A和B的乘积定义为<br>$$<br>AB&#x3D;{xy|x \in A, y \in B}<br>$$<br>类似于笛卡尔积，比如A&#x3D;{a,b}，B&#x3D;{c,d}，AB&#x3D;{ac,ad,bc,bd}</p>
+<p>特殊地，有{$\varepsilon$}A&#x3D;A{$\varepsilon$}&#x3D;A，注意$\varepsilon$是符号串，而不是集合</p>
+<h5 id="符号串的幂运算"><a href="#符号串的幂运算" class="headerlink" title="符号串的幂运算"></a>符号串的幂运算</h5><p>假设有符号串x，则其幂运算定义如下<br>$$<br>x^0&#x3D;\varepsilon \<br>x^1&#x3D;x \<br>x^2&#x3D;xx\<br>…… \<br>x^n &#x3D; xx…xx(n个x)<br>$$</p>
+<h5 id="集合的幂运算"><a href="#集合的幂运算" class="headerlink" title="集合的幂运算"></a>集合的幂运算</h5><p>集合的幂运算，就是若干个集合累次相乘，其定义如下<br>$$<br>A^0&#x3D;{\varepsilon} \<br>A^1&#x3D;A \<br>A^2&#x3D;AA \<br>…<br>$$</p>
+<h5 id="集合的正闭包和闭包"><a href="#集合的正闭包和闭包" class="headerlink" title="集合的正闭包和闭包"></a>集合的正闭包和闭包</h5><p>假设有集合A，其正闭包定义为$A^+ &#x3D; A^1 \cup A^2 \cup … \cup A^n$</p>
+<p>其闭包定义为，$A^*&#x3D;{\varepsilon}A^1 \cup A^2 \cup … \cup A^n$</p>
+<p>即闭包比正闭包多了一个空符号串</p>
+<h3 id="2-3文法和语言的形式定义"><a href="#2-3文法和语言的形式定义" class="headerlink" title="2.3文法和语言的形式定义"></a>2.3文法和语言的形式定义</h3><h4 id="2-3-1形式语言"><a href="#2-3-1形式语言" class="headerlink" title="2.3.1形式语言"></a>2.3.1形式语言</h4><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>每个形式语言都是某个字母表上按某种规则构成的所有符号串的集合，即任何字母表上的符号串的集合都可以定义为一个形式语言</p>
+<h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>形式语言有两种描述方法</p>
+<ol>
+<li><p>枚举方法</p>
+<p>当语言为有穷集合时，采用枚举法来描述该形式语言，L1&#x3D;{ab,cd,ef}</p>
+</li>
+<li><p>用文法描述语言</p>
+<p>对于无穷集合的语言，枚举法就不适用，可以使用文法来描述语言如下</p>
+<p>A$\rightarrow$0</p>
+<p>A$\rightarrow$1</p>
+<p>A$\rightarrow$A0</p>
+<p>A$\rightarrow$A1</p>
+</li>
+</ol>
+<h4 id="2-3-2文法的形式定义"><a href="#2-3-2文法的形式定义" class="headerlink" title="2.3.2文法的形式定义"></a>2.3.2文法的形式定义</h4><h5 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h5><p>规则也称为产生式，用来告诉我们如何使用规则中的符号串来生成语言中的序列</p>
+<p>规则中出现的符号分为两类，一种是终结符号（用小写字母表示），一种是非终结符号（一般用大写字母表示），终结符号是不可再分割的基本符号。</p>
+<h5 id="文法"><a href="#文法" class="headerlink" title="文法"></a>文法</h5><p>文法是规则的非空有穷集合，使用四元组G&#x3D;$(V_N,V_T,P,S)$表示。</p>
+<blockquote>
+<p>$V_N$是规则中非终结符号的集合</p>
+<p>$V_T$是规则中终结符号的集合</p>
+<p>P是文法规则的集合</p>
+<p>S是一个非终结符号，称为文法的开始符号（识别符号），<font color='yellow'>注意：可以用G[S]表示该文法的开始符为S</font></p>
+</blockquote>
+<p>对于若干个左部相同的规则，如下<br>$$<br>A\rightarrow a_1  \</p>
+<p>A\rightarrow a_2  \</p>
+<p>…  \</p>
+<p>A\rightarrow a_n<br>$$<br>可以缩写为$A \rightarrow a_1 | a_2 | … | a_n$</p>
+<p>并规定，第一条规则的左部是开始符号，注意，G[A]可表示A为文法G的开始符</p>
+<h4 id="2-3-3语言的形式定义"><a href="#2-3-3语言的形式定义" class="headerlink" title="2.3.3语言的形式定义"></a>2.3.3语言的形式定义</h4><h5 id="1-直接推导"><a href="#1-直接推导" class="headerlink" title="1.直接推导"></a>1.直接推导</h5><p>由一个符号串推导出另一个符号串， 且仅使用一次规则的过程。推导符号为$ \Rightarrow$</p>
+<p>，注意与规则符号$\rightarrow$区分</p>
+<h5 id="2-推导"><a href="#2-推导" class="headerlink" title="2.推导"></a>2.推导</h5><p>一个符号串经过一次或若干次规则得到另一个符号串的过程，记为$a_0 \mathop{\Rightarrow}\limits^+ a_n$，注意这里至少要经过一次直接推导</p>
+<h5 id="3-广义推导"><a href="#3-广义推导" class="headerlink" title="3.广义推导"></a>3.广义推导</h5><p>$a_0\mathop\Rightarrow\limits^+ a_n$，表示$a_0$经过0步或若干步直接推导，得到$a_n$，即$a_0&#x3D;a_n或者a_0\mathop\Rightarrow\limits^+a_n$</p>
+<h5 id="4-句型和句子"><a href="#4-句型和句子" class="headerlink" title="4.句型和句子"></a>4.句型和句子</h5><p>假设有文法G[S]，如果$S\mathop\Rightarrow\limits^<em>x，x\in (V_N \cup V_T)^</em>$，则称x为文法G[S]的句型，即句型包括由开始符经过广义推导产生的所有符号串；如果有$S\mathop\Rightarrow\limits^<em>x, x\in V_T^</em>$，则称x是文法G[S]的句子，即句子仅仅由终结符号组成的符号串。由此可以看出句子是句型的子集。</p>
+<h5 id="5-语言"><a href="#5-语言" class="headerlink" title="5.语言"></a>5.语言</h5><p>由文法G[S]产生的所有句子的集合即为语言。</p>
+<h4 id="2-3-4规范推导和规范规约"><a href="#2-3-4规范推导和规范规约" class="headerlink" title="2.3.4规范推导和规范规约"></a>2.3.4规范推导和规范规约</h4><h5 id="规范推导"><a href="#规范推导" class="headerlink" title="规范推导"></a>规范推导</h5><p>最左推导：对于推导序列中的每一步直接推导$a\Rightarrow b$，都是对a中最左边的非终结符进行替换</p>
+<p>最右推导：对于推导序列中的每一步直接推导$a\Rightarrow b$，都是对a中最右边的非终结符进行替换</p>
+<p>规范推导：最右推导被称为规范推导，用规范推导推导出的句型被称为规范句型</p>
+<h5 id="规范规约"><a href="#规范规约" class="headerlink" title="规范规约"></a>规范规约</h5><p>规约：规约就是推导的逆过程，就是把句型中的某个子串替换为非终结符的过程，规约用$\mathop \Rightarrow \limits^.$表示。</p>
+<p>规范规约：规范推导的逆过程被称为最左规约，也被称为规范规约。</p>
+<h4 id="2-3-5递归规则和文法的递归性"><a href="#2-3-5递归规则和文法的递归性" class="headerlink" title="2.3.5递归规则和文法的递归性"></a>2.3.5递归规则和文法的递归性</h4><h5 id="1-递归规则"><a href="#1-递归规则" class="headerlink" title="1.递归规则"></a>1.递归规则</h5><p>递归规则：指规则的左部和右部都具有相同的非终结符</p>
+<p>若规则形如$A\rightarrow A…$，则称规则左递归</p>
+<p>若规则形如$A\rightarrow …A$，则称规则右递归</p>
+<p>若规则形如$A\rightarrow …A…$，则称规则递归</p>
+<h5 id="2-文法的递归性"><a href="#2-文法的递归性" class="headerlink" title="2.文法的递归性"></a>2.文法的递归性</h5><p>文法的递归性：是指对于文法中任意非终结符，若能建立这样的推导过程，使推导的结果出现该非终结符，那么就称该文法是递归性的。</p>
+<p>对于非终结符，若有</p>
+<p>$A\mathop\Rightarrow\limits^+ A…$ ，则称文法左递归</p>
+<p>$A\mathop\Rightarrow\limits^+ …A$ ，则称文法右递归</p>
+<p>$A\mathop\Rightarrow\limits^+ …A…$ ，则称文法递归</p>
+<h3 id="2-4短语、直接短语和句柄"><a href="#2-4短语、直接短语和句柄" class="headerlink" title="2.4短语、直接短语和句柄"></a>2.4短语、直接短语和句柄</h3><h4 id="2-4-1短语和直接短语"><a href="#2-4-1短语和直接短语" class="headerlink" title="2.4.1短语和直接短语"></a>2.4.1短语和直接短语</h4><h5 id="短语"><a href="#短语" class="headerlink" title="短语"></a>短语</h5><p>对于文法G[S]，假定$\alpha \beta \sigma$为该文法的句型（<font color='yellow'>注意：这是判断符号串的短语或直接短语的前提，如果符号串不是文法的句型，就没有短语和直接短语</font>）</p>
+<p>若有，$S\mathop\Rightarrow\limits^*\alpha A\sigma$且$A\mathop\Rightarrow\limits^+ \beta$，那么就称$\beta$是相对于非终结符A的句型$\alpha \beta \sigma$的短语</p>
+<h5 id="直接短语"><a href="#直接短语" class="headerlink" title="直接短语"></a>直接短语</h5><p>特别地，对于上述情况，若有$S\mathop\Rightarrow\limits^*\alpha A\sigma$且$A\mathop\Rightarrow\limits\beta$，则称$\beta$为直接短语，即该非终结符通过直接推导得到$\beta$</p>
+<h4 id="2-4-2句柄"><a href="#2-4-2句柄" class="headerlink" title="2.4.2句柄"></a>2.4.2句柄</h4><p>一个句型地最左直接短语称为该句型的句柄</p>
+<h3 id="2-5语法树和文法的二义性"><a href="#2-5语法树和文法的二义性" class="headerlink" title="2.5语法树和文法的二义性"></a>2.5语法树和文法的二义性</h3><h4 id="2-5-1推导和语法树"><a href="#2-5-1推导和语法树" class="headerlink" title="2.5.1推导和语法树"></a>2.5.1推导和语法树</h4><p>对于句型的推导过程可以生成一棵语法树，然后上述短语、直接短语、句柄都可以通过语法树求出</p>
+<p>短语：子树的叶子节点组成的符号串</p>
+<p>直接短语：简单子树的叶子节点组成的符号串</p>
+<blockquote>
+<p>简单子树：算上子树的根节点只有两层</p>
+</blockquote>
+<p>句柄：最左简单子树的叶子节点组成的符号串</p>
+<h4 id="2-5-2文法的二义性"><a href="#2-5-2文法的二义性" class="headerlink" title="2.5.2文法的二义性"></a>2.5.2文法的二义性</h4><p>对于文法中任一句型的推导都能构造出唯一的语法树，则该文法就不具有二义性，否则该文法是具有二义性的。等价为该句型有唯一的最左推导（或最右推导），则该文法不具有二义性，否则就具有二义性。</p>
+<h3 id="2-6文法和语言的分类"><a href="#2-6文法和语言的分类" class="headerlink" title="2.6文法和语言的分类"></a>2.6文法和语言的分类</h3><p>各文法的不同仅在规则的形式限制方面有所不同</p>
+<ol>
+<li><p>0型文法（无限制文法）</p>
+<p>0型文法的每条规则的形式为$\alpha \rightarrow\beta，其中\alpha \in (V_N \cup V_T)^<em>且至少含有一个非终结符，\beta \in (V_N \cup V_T)^</em>$</p>
+</li>
+<li><p>1型文法（上下文有关文法）</p>
+<p>1型文法每条规则形式为$\alpha A\beta\rightarrow\alpha u \beta，其中A\in V_N, \alpha,\beta \in(V_N \cup V_T)^*,u\in(V_N \cup V_T)^+$，即非终结符A必须考虑$\alpha和\beta$这样一个上下文环境才能把A替换为u</p>
+</li>
+<li><p>2型文法（上下文无关文法）</p>
+<p>2型文法的规则形如$A\rightarrow \beta，其中A\in V_N，\beta \in (V_N \cup V_T)^*$，就不需要考虑上下文就可以直接将非终结符进行替换 </p>
+</li>
+<li><p>3型文法（正规文法）</p>
+<p>又分为左线性文法和右线性文法。</p>
+<p>右线性文法：其规则形如$A\rightarrow\alpha B 或 A\rightarrow \alpha，其中A,B\in V_N，\alpha\in V_T^*$</p>
+<p>左线性文法：其规则形如$A\rightarrow B\alpha或A\rightarrow\alpha, 其中A,B\in V_N，\alpha\in V_T^*$</p>
+</li>
+</ol>
+<p>由上述定义可知，0~3型文法的限制逐渐增多，因此$3型文法 \sub 2型文法 \sub 1型文法 \sub 0型文法$</p>
+<h2 id="3-词法分析与有穷自动机"><a href="#3-词法分析与有穷自动机" class="headerlink" title="3.词法分析与有穷自动机"></a>3.词法分析与有穷自动机</h2><h3 id="3-3语言单词符号的两种定义方式"><a href="#3-3语言单词符号的两种定义方式" class="headerlink" title="3.3语言单词符号的两种定义方式"></a>3.3语言单词符号的两种定义方式</h3><h4 id="3-3-1正规式与正规集"><a href="#3-3-1正规式与正规集" class="headerlink" title="3.3.1正规式与正规集"></a>3.3.1正规式与正规集</h4><h5 id="正规式中运算符的优先级"><a href="#正规式中运算符的优先级" class="headerlink" title="正规式中运算符的优先级"></a>正规式中运算符的优先级</h5><p>*（闭包）优先级最高，连接运算次之，或(|)优先级最低</p>
+<h4 id="3-3-2正规文法与正规式"><a href="#3-3-2正规文法与正规式" class="headerlink" title="3.3.2正规文法与正规式"></a>3.3.2正规文法与正规式</h4><h5 id="1-正规文法到正规式的转换"><a href="#1-正规文法到正规式的转换" class="headerlink" title="1.正规文法到正规式的转换"></a>1.正规文法到正规式的转换</h5><ol>
+<li><p>将正规文法的每个非终结符表示成关于它的一个正规方程</p>
+</li>
+<li><p>有如下求解规则：</p>
+<p>若x&#x3D;ax|b(或可表示成x&#x3D;ax+b)，则解为x&#x3D;$a^*b$</p>
+<p>若x&#x3D;xa|b(或可表示成x&#x3D;xa+b)，则解为x&#x3D;$ba^*$</p>
+</li>
+</ol>
+<h5 id="2-正规式到正规文法的转换"><a href="#2-正规式到正规文法的转换" class="headerlink" title="2.正规式到正规文法的转换"></a>2.正规式到正规文法的转换</h5><p>以下给出转化成右线性文法的方法</p>
+<ol>
+<li><p>对于正规式R，设文法的开始符为S，则可写出规则$S\rightarrow R$</p>
+</li>
+<li><p>然后利用转换规则，将形如$A\rightarrow ab$的规则转换为$A\rightarrow aB和B\rightarrow b$两规则，其中B是新增的非终结符；将形如$A\rightarrow a^*b$的规则转换成$A\rightarrow aA|b$</p>
+</li>
+<li><p>然后不断利用上述规则，直到每条规则最多含有一个终结符</p>
+</li>
+</ol>
+<h3 id="3-4正规式与有穷自动机"><a href="#3-4正规式与有穷自动机" class="headerlink" title="3.4正规式与有穷自动机"></a>3.4正规式与有穷自动机</h3><h4 id="3-4-1确定有穷自动机DFA"><a href="#3-4-1确定有穷自动机DFA" class="headerlink" title="3.4.1确定有穷自动机DFA"></a>3.4.1确定有穷自动机DFA</h4><p>可以描述为五元组M&#x3D;$(Q,\Sigma, f, S, Z)$，其中Q是一个有穷状态集合，$\Sigma$是一个有穷的输入字母表，f是一个从$Q\times \Sigma到Q$的<font color='yellow'>单值映射</font>，S是<font color='yellow'>唯一</font>的一个初态($S\in Q$)，Z是一个终态集合($Z\subseteq Q$)</p>
+<p><font color='yellow'>注意</font>：初态要用箭头指出，终态为双层圈</p>
+<p>对于$\Sigma^*$中的任何符号串B，若存在一条从初态到终态的道路，且这条道路所有弧上的标记组成的符号串为B，则称符号串B为DFA M所识别（或接受）</p>
+<p>若DFA M的初态又是终态，则空串$\epsilon$也被自动机DFA M所识别</p>
+<h4 id="3-4-2-非确定有穷自动机NFA"><a href="#3-4-2-非确定有穷自动机NFA" class="headerlink" title="3.4.2 非确定有穷自动机NFA"></a>3.4.2 非确定有穷自动机NFA</h4><p>与DFA的区别在于：</p>
+<ol>
+<li>映射不是单值映射，即一个状态经过同样的输入字母，可能会走向多个状态，换句话说，f是一个从$Q\times \Sigma到Q的子集的映射$</li>
+<li>有多个初态（开始状态）,即$S\sub Q$</li>
+<li>可以允许有空弧，即弧上的字母为$\epsilon$</li>
+</ol>
+<h4 id="3-4-3-由正规表达式构造NFA"><a href="#3-4-3-由正规表达式构造NFA" class="headerlink" title="3.4.3 由正规表达式构造NFA"></a>3.4.3 由正规表达式构造NFA</h4><p>见书上</p>
+<h4 id="3-4-4-NFA确定化为DFA"><a href="#3-4-4-NFA确定化为DFA" class="headerlink" title="3.4.4 NFA确定化为DFA"></a>3.4.4 NFA确定化为DFA</h4><blockquote>
+<p>定义$\epsilon-CLOSURE(\epsilon闭包)$：$\epsilon-CLOSURE(I)$就是对状态子集中的所有状态经过零条或若干条空弧达到的状态的集合。</p>
+<p>定义$I_a(I是一个状态子集)$：表示状态子集$I$中的状态经过一条a弧到达的状态的集合的$\epsilon闭包$。</p>
+</blockquote>
+<p>算法步骤</p>
+<ol>
+<li><p>将$\epsilon-CLOSURE({S})$作为新的初态</p>
+</li>
+<li><p>然后对于所有输入字母a，通过$I_a$，构造新的状态集</p>
+</li>
+<li><p>每个状态集都构造一次，直到不再出现新的状态集</p>
+</li>
+<li><p>然后对状态集重新编号，根据该表构造DFA（其中含有原始终态的状态集为现在的终态）</p>
+</li>
+</ol>
+<h4 id="3-4-5-DFA的化简"><a href="#3-4-5-DFA的化简" class="headerlink" title="3.4.5 DFA的化简"></a>3.4.5 DFA的化简</h4><p>化简的目的：</p>
+<ol>
+<li>没有多余的状态</li>
+<li>状态集中没有两个状态是等价的</li>
+</ol>
+<p>化简方法：</p>
+<ol>
+<li>首先将状态划分为两个集合，终态集和非终态集</li>
+<li>然后对于所有输入字母，作用于这些状态集，如果出现了不属于现有划分的状态集，则将这些状态划分出去，构成新的状态集</li>
+<li>重复上述步骤，直至不会出现新的状态集，然后就完成的划分</li>
+<li>划分之后，有些状态就会合并</li>
+</ol>
+<h3 id="3-5-正规文法与有穷自动机"><a href="#3-5-正规文法与有穷自动机" class="headerlink" title="3.5 正规文法与有穷自动机"></a>3.5 正规文法与有穷自动机</h3><h4 id="3-5-3-有穷自动机到正规文法的转换方法"><a href="#3-5-3-有穷自动机到正规文法的转换方法" class="headerlink" title="3.5.3 有穷自动机到正规文法的转换方法"></a>3.5.3 有穷自动机到正规文法的转换方法</h4><p>假设有有穷自动机M&#x3D;$(Q, \Sigma, f, q_0, Z)$，则可以通过以下步骤将其转换为正规文法G&#x3D;$(V_N, V_T, P, S)$</p>
+<ol>
+<li>令$V_N&#x3D;Q,V_T&#x3D;\Sigma, S&#x3D;q_0$</li>
+<li>若f(A,a)&#x3D;B，且B$\neq$Z（B不是终态），则将规则$A\rightarrow aB$加到P中</li>
+<li>若f(A,a)&#x3D;B，且B&#x3D;Z（B为终态），则将规则$A\rightarrow aB|a(或A\rightarrow aB,B\rightarrow \epsilon)$加入到规则P</li>
+<li>若存在文法的开始符S是一个终态，则将$S\rightarrow\epsilon$加入到规则P中</li>
+</ol>
+<h2 id="4-语法分析"><a href="#4-语法分析" class="headerlink" title="4.语法分析"></a>4.语法分析</h2><h3 id="4-1语法分析程序的功能"><a href="#4-1语法分析程序的功能" class="headerlink" title="4.1语法分析程序的功能"></a>4.1语法分析程序的功能</h3><p>以词法分析器生成的单词符号序列作为输入，根据文法规则，检查所给单词符号序列是否是该语言的文法的一个句子，即判断该符号序列能否由该文法推导出。</p>
+<h3 id="4-2自上而下分析法"><a href="#4-2自上而下分析法" class="headerlink" title="4.2自上而下分析法"></a>4.2自上而下分析法</h3><h4 id="4-2-1非确定的自上而下分析法的思想"><a href="#4-2-1非确定的自上而下分析法的思想" class="headerlink" title="4.2.1非确定的自上而下分析法的思想"></a>4.2.1非确定的自上而下分析法的思想</h4><p>对于给定的输入串W，从文法的开始符开始，为该输入串建立一棵语法树。</p>
+<p>这种方法实际上就是一种暴力搜索的方式，类似于DFS，由于有些文法存在左递归再加上回溯的存在，导致其效率十分低下。</p>
+<h4 id="4-2-2文法的左递归性和回溯的消除"><a href="#4-2-2文法的左递归性和回溯的消除" class="headerlink" title="4.2.2文法的左递归性和回溯的消除"></a>4.2.2文法的左递归性和回溯的消除</h4><h5 id="1-文法左递归性的消除"><a href="#1-文法左递归性的消除" class="headerlink" title="1. 文法左递归性的消除"></a>1. 文法左递归性的消除</h5><ul>
+<li><p>对于直接左递归的规则，可以通过如下的等价转换进行左递归的消除</p>
+<p>设左递归规则为：$A\rightarrow A\alpha|\beta$</p>
+<p>则可以等价转化为：$A\rightarrow \beta A^{‘}$和$A^{‘}\rightarrow \alpha A^{‘} | \epsilon$</p>
+<p>更一般地，可以有如下的等价转换方式，对于左递归规则</p>
+<p>$A\rightarrow A\alpha_1|A\alpha_2|A\alpha_3|…|A\alpha_m|\beta_1 |\beta_2|…|\beta_n$</p>
+<p>可以转换为$A\rightarrow \beta_1A^{‘}|\beta_2A^{‘}|\beta_3A^{‘}|…|\beta_nA^{‘}$和$A^{‘}\rightarrow \alpha_1 A^{‘}|\alpha_2 A^{‘} | \alpha_3 A^{‘}|…|\alpha_m A^{‘}|\epsilon$</p>
+</li>
+</ul>
+<h5 id="2-回溯的消除"><a href="#2-回溯的消除" class="headerlink" title="2. 回溯的消除"></a>2. 回溯的消除</h5><p>定义三个集合FIRST,FOLLOW,SELECT</p>
+<ol>
+<li><p>FIRST集计算方式</p>
+<p>对于$A\rightarrow X_1X_2X_3…X_n$</p>
+<p>$A&#x3D;FIRST(X_1)\cup FIRST(X_2) \cup … FIRST(X_i)（直到X_{i+1}无法推导出空串 \epsilon）$</p>
+<p><font color='yellow'>注意：当且仅当$X_1~X_n都能推出空串时，FIRST(A)才有空串\epsilon这个元素$</font></p>
+</li>
+<li><p>FOLLOW集计算方式</p>
+<p>分为两种情形：</p>
+<ol>
+<li><p>对于$X\rightarrow…AB$</p>
+<p>FOLLOW(A)&#x3D;FIRST(B)</p>
+</li>
+<li><p>若有$X\rightarrow…AB$且B$\mathop\Rightarrow\limits^+ \epsilon$（即B可以推导出空串）或者$X\rightarrow….A$</p>
+<p>那么FOLLOW(A)&#x3D;FOLLOW(X)</p>
+</li>
+</ol>
+<p>将以上两种情况求并集即可求出A的FOLLOW集</p>
+</li>
+<li><p>SELECT集计算方式</p>
+<p>对于规则$A\rightarrow\alpha$，其SELECT集定义如下<br>$$<br>SELECT(A \rightarrow \alpha)&#x3D;\left{<br>\begin{aligned}<br>&amp; FIRST(\alpha) &amp; 若\alpha \mathop\nRightarrow\limits^+ \epsilon\<br>&amp; FIRST(\alpha) \textbackslash {\epsilon} \cup FOLLOW(A) &amp; 若\alpha \mathop\Rightarrow\limits^+ \epsilon\<br>\end{aligned}<br>\right.<br>$$</p>
+</li>
+</ol>
+<h5 id="3-LL-1-文法"><a href="#3-LL-1-文法" class="headerlink" title="3. LL(1)文法"></a>3. LL(1)文法</h5><p>LL(1)文法需满足以下三个条件</p>
+<ol>
+<li>不是左递归性文法</li>
+<li>任意非终结符的FIRST集没有交集</li>
+<li>若某个非终结符可以推导出$\epsilon$(空串)，那么其FIRST集和FOLLOW集的交集应该为空集</li>
+</ol>
+<p>或者，也可以通过SELECT集来判断，即对于任一非终极符，其所有候选式的SELECT的交集为空集</p>
+<h5 id="4-非LL-1-文法改写为LL-1-文法"><a href="#4-非LL-1-文法改写为LL-1-文法" class="headerlink" title="4.非LL(1)文法改写为LL(1)文法"></a>4.非LL(1)文法改写为LL(1)文法</h5><p>本质上就是消除左递归和公共左因子，消除左递归的方式见4.2.2</p>
+<p>对于含有公共左因子的一些规则，即形如$A\rightarrow \alpha\beta_1|\alpha\beta_2|…|\alpha\beta_n$的规则（可以看出这样的规则的SELECT集之间是有交集的），可以提取公因子$\alpha$，等价转换成如下两个规则<br>$$<br>A\rightarrow \alpha A^{‘}\<br>A^{‘}\rightarrow\beta_1|\beta_2|…|\beta_n<br>$$</p>
+<h4 id="4-2-5预测分析法与预测分析表的构造"><a href="#4-2-5预测分析法与预测分析表的构造" class="headerlink" title="4.2.5预测分析法与预测分析表的构造"></a>4.2.5预测分析法与预测分析表的构造</h4><p>预测分析表通过SELECT集就可以很方便的构造，对于SELECT($A\rightarrow \alpha$)&#x3D;{a,b,c}，则预测分析表中M[A,a]&#x3D;$A\rightarrow \alpha$，M[A,b]&#x3D;$A\rightarrow \alpha$，M[A,c]&#x3D;$A\rightarrow \alpha$</p>
+<h3 id="4-4算符优先分析法"><a href="#4-4算符优先分析法" class="headerlink" title="4.4算符优先分析法"></a>4.4算符优先分析法</h3><h4 id="4-4-1算法概述"><a href="#4-4-1算法概述" class="headerlink" title="4.4.1算法概述"></a>4.4.1算法概述</h4><p>通过算符的优先级关系来确定可规约串，然后进行规约</p>
+<h4 id="4-4-2算符优先文法的定义"><a href="#4-4-2算符优先文法的定义" class="headerlink" title="4.4.2算符优先文法的定义"></a>4.4.2算符优先文法的定义</h4><h5 id="1-算符文法定义"><a href="#1-算符文法定义" class="headerlink" title="1.算符文法定义"></a>1.算符文法定义</h5><p>在算符文法中，任何一个规则的右部都不存在两个非终结符相邻的情况。</p>
+<h5 id="2-定义任意两个终结符号的优先关系"><a href="#2-定义任意两个终结符号的优先关系" class="headerlink" title="2.定义任意两个终结符号的优先关系"></a>2.定义任意两个终结符号的优先关系</h5><ol>
+<li>a&#x3D;b当且仅当算符文法G中含有形如$P\rightarrow …ab…或P\rightarrow…aQb$</li>
+<li>a&lt;b当且仅当算符文法G中含有形如$P\rightarrow …aR…的规则，且R\mathop{\Rightarrow}\limits^+b…或R\mathop{\Rightarrow}\limits^+Qb…$</li>
+<li>a&gt;b当且仅当算符文法G中含有形如$P\rightarrow …Rb…的规则，且R\mathop{\Rightarrow}\limits^+…a或R\mathop{\Rightarrow}\limits^+…aQ$</li>
+</ol>
+<h5 id="3-算符优先文法定义"><a href="#3-算符优先文法定义" class="headerlink" title="3.算符优先文法定义"></a>3.算符优先文法定义</h5><p>判断条件：任何两个字符之间不存在两种优先关系</p>
+<h4 id="4-4-3算符优先关系表的构造"><a href="#4-4-3算符优先关系表的构造" class="headerlink" title="4.4.3算符优先关系表的构造"></a>4.4.3算符优先关系表的构造</h4><p>对于非终结符定义两个集合FIRSTVT和LASTVT，至于为什么要这两个集合，可以看上述终结符号优先关系的定义。</p>
+<ol>
+<li><p>FIRSTVT(A)&#x3D;$ { b|A\mathop{\Rightarrow}\limits^+b…或A\mathop{\Rightarrow}\limits^+ Bb…,b\in V_T,B\in V_N}$，该集合可以理解为A推导出的句型中第一个出现的终结符号集合</p>
+<p>对于$A\rightarrow B$，FIRSTVT(A)&#x3D;FIRSTVT(B)</p>
+</li>
+<li><p>LASTVT(A)&#x3D;${a|A\mathop{\Rightarrow}\limits^+…a或A\mathop{\Rightarrow}\limits^+…aB,a\in V_T, B\in V_N}$，该集合就是A推导出的句型 中最靠近末尾的终结符号集合</p>
+</li>
+</ol>
+<h2 id="5-语法制导翻译技术和中间代码生成"><a href="#5-语法制导翻译技术和中间代码生成" class="headerlink" title="5. 语法制导翻译技术和中间代码生成"></a>5. 语法制导翻译技术和中间代码生成</h2><h3 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h3><p>属性文法</p>
+<p>语法制导翻译的基本思想</p>
+<p>常见的几种中间代码的形式：逆波兰式、三元式、四元式、树形表示</p>
+<h3 id="5-2-属性文法"><a href="#5-2-属性文法" class="headerlink" title="5.2  属性文法"></a>5.2  属性文法</h3><blockquote>
+<p>属性文法：一个属性文法是在上下文无关文法的基础上，允许每个文法符号X（终结符或非终结符）根据处理的需要，定义与X相关联的属性。</p>
+</blockquote>
+<p>对属性的处理有计算、传递信息等 。形式化的定义，一个属性文法定义为一个三元组AG，AG&#x3D;(G,V,E)。其中G表示一个上下文无关文法，V表示属性的有穷集合，E表示属性的断言或谓词的有穷集。</p>
+<h3 id="综合属性和继承属性"><a href="#综合属性和继承属性" class="headerlink" title="综合属性和继承属性"></a>综合属性和继承属性</h3><p>属性分为两类，综合属性和继承属性，综合属性用于“自下而上”传递信息（在规约的时候传递信息）；而继承属性用于“自上而下”传递信息。</p>
+<h2 id="7-代码优化"><a href="#7-代码优化" class="headerlink" title="7. 代码优化"></a>7. 代码优化</h2>
+	</div>
+
+	
+
+	
+
+	
+</article>
+
+	<div id="share_container">
+	<div id="share" data-initialized="true">
+		<a class="no-pjax icon-wechat" tooltip="分享到微信">
+			<button class="btn btn-icon btn-success">
+				<span class="btn-inner--icon"><i class="fa fa-weixin"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-douban" tooltip="分享到豆瓣">
+			<button class="btn btn-icon btn-primary" style="background: #209261;border: none;">
+				豆
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-qq" tooltip="分享到 QQ">
+			<button class="btn btn-icon btn-primary" style="background: #2196f3;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-qq"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-qzone" tooltip="分享到 QQ 空间">
+			<button class="btn btn-icon btn-primary" style="background: #ffc107;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-star"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-weibo" tooltip="分享到微博">
+			<button class="btn btn-icon btn-warning">
+				<span class="btn-inner--icon"><i class="fa fa-weibo"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-facebook" tooltip="分享到 Facebook">
+			<button class="btn btn-icon btn-primary" style="background: #283593;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-facebook"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-twitter" tooltip="分享到 Twitter">
+			<button class="btn btn-icon btn-primary" style="background: #03a9f4;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-twitter"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-telegram" href="https://telegram.me/share/url?url=http://example.com/2023/05/25/Base/Compiler/&text=编译原理" tooltip="分享到 Telegram">
+			<button class="btn btn-icon btn-primary" style="background: #42a5f5;border: none;">
+				<span class="btn-inner--icon"><i class="fa fa-telegram"></i></span>
+			</button>
+		</a>
+		<a target="_blank" class="no-pjax icon-copy-link" id="share_copy_link" tooltip="复制链接">
+			<button class="btn btn-icon btn-default">
+				<span class="btn-inner--icon"><i class="fa fa-link"></i></span>
+			</button>
+		</a>
+	</div>
+	<button id="share_show" class="btn btn-icon btn-primary" tooltip="分享">
+		<span class="btn-inner--icon"><i class="fa fa-share"></i></span>
+	</button>
+</div>
+<script type="text/javascript">
+	socialShare("#share", {
+	    title : '编译原理',
+	    description : '编译原理2.文法和语言的基本知识2.1程序设计语言的描述三要素
+
+语法：对语言结构的定义
+语义：描述...',
+	    wechatQrcodeTitle : "分享到微信",
+	    wechatQrcodeHelper : '微信扫描二维码',
+	    source : 'http://example.com/2023/05/25/Base/Compiler/'
+	});
+	$("#share_show")[0].onclick = function(){
+		$("#share_container").addClass("opened");
+	};
+	$("#share_copy_link")[0].onclick = function(){
+		let input = document.createElement('input');
+		document.body.appendChild(input);
+		input.setAttribute("value", window.location.href);
+		input.setAttribute("readonly", "readonly");
+		input.setAttribute("style", "opacity: 0;mouse-events:none;");
+		input.select();
+		if (document.execCommand('copy')){
+			iziToast.show({
+				title: '链接已复制',
+				message: "链接已复制到剪贴板",
+				class: 'shadow',
+				position: 'topRight',
+				backgroundColor: '#2dce89',
+				titleColor: '#ffffff',
+				messageColor: '#ffffff',
+				iconColor: '#ffffff',
+				progressBarColor: '#ffffff',
+				icon: 'fa fa-check',
+				timeout: 5000
+			});
+		}else{
+			iziToast.show({
+				title: '复制失败',
+				message: "请手动复制链接",
+				class: 'shadow',
+				position: 'topRight',
+				backgroundColor: '#f5365c',
+				titleColor: '#ffffff',
+				messageColor: '#ffffff',
+				iconColor: '#ffffff',
+				progressBarColor: '#ffffff',
+				icon: 'fa fa-close',
+				timeout: 5000
+			});
+		}
+		document.body.removeChild(input);
+	};
+</script>
+
+
+
+
+
+<div class="post-navigation card shadow-sm"><div class="post-navigation-item post-navigation-pre"><span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="/2023/05/25/Base/ComputerComposition/" rel="prev"> </a></div><div class="post-navigation-item post-navigation-next"><span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/2023/05/25/Base/CG/" rel="next"> </a></div></div>
+
+
+
+
+		
+		
+		
+		
+
+					<footer id="footer" class="site-footer card shadow-sm border-0">
+						
+						<div>Theme <a target="_blank" rel="noopener" href="https://github.com/solstice23/hexo-theme-argon"><strong>Argon</strong></a> | Powered by Hexo</div>
+						<span id="busuanzi_container_site_uv">
+							本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+						</span>
+					</footer>
+				</main>
+			</div>
+		</div>
+		
+<script src="/argontheme.js"></script>
+
+		
+		
+		
+
+		
+
+	</div>
+</div>
+<noscript>
+	<style>
+		article img.lazyload[src^="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPg"]{display: none;}
+		.comment-item-text .comment-sticker.lazyload{display: none;}
+	</style>
+</noscript>
+</body>
+
+
+
+</html>
+
