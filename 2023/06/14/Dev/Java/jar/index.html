@@ -3,20 +3,20 @@
 <html class="article-header-style-default">
 <head>
 	
-	<title>算法题-from cf div2 848 Problem C - Origin_OvO Blog</title>
+	<title>jar - Origin_OvO Blog</title>
 	<meta charset="utf-8">
 	
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	
-	<meta name="description" content="Codeforces Round #848 (Div. 2)C. Flexible String题目描述给定两个长度相同的字符串a，b，给定一个操作可以将a中的一个字符替换成任意字符，且操作的字母种类不超过k个，问a和b之间相同字串数量的最大值。 题目链接C. Flexible String 解题思路首先，可以看出这样的性质，若a和b之间有一段长度为len的相同的子串，那么这一段子串所贡献的相同子">
+	<meta name="description" content="将项目打包成jar使用Maven需要在Maven的配置文件pom.xml中配置项目的主类信息，配置信息如下。 1234567891011121314151617&lt;build&gt;    &lt;plugins&gt;        &lt;plugin&gt;            &lt;groupId&gt;org.apache.maven.plugins&lt;&#x2F;groupId&amp;gt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法题-from cf div2 848 Problem C">
-<meta property="og:url" content="http://example.com/2023/05/25/Problems/cf/div2_848/C/index.html">
+<meta property="og:title" content="jar">
+<meta property="og:url" content="http://example.com/2023/06/14/Dev/Java/jar/index.html">
 <meta property="og:site_name" content="Origin_OvO Blog">
-<meta property="og:description" content="Codeforces Round #848 (Div. 2)C. Flexible String题目描述给定两个长度相同的字符串a，b，给定一个操作可以将a中的一个字符替换成任意字符，且操作的字母种类不超过k个，问a和b之间相同字串数量的最大值。 题目链接C. Flexible String 解题思路首先，可以看出这样的性质，若a和b之间有一段长度为len的相同的子串，那么这一段子串所贡献的相同子">
+<meta property="og:description" content="将项目打包成jar使用Maven需要在Maven的配置文件pom.xml中配置项目的主类信息，配置信息如下。 1234567891011121314151617&lt;build&gt;    &lt;plugins&gt;        &lt;plugin&gt;            &lt;groupId&gt;org.apache.maven.plugins&lt;&#x2F;groupId&amp;gt">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-05-25T13:27:55.343Z">
-<meta property="article:modified_time" content="2023-05-25T11:51:25.258Z">
+<meta property="article:published_time" content="2023-06-14T06:53:19.580Z">
+<meta property="article:modified_time" content="2023-06-14T06:55:46.234Z">
 <meta property="article:author" content="Origin_OvO">
 <meta name="twitter:card" content="summary">
 
@@ -602,13 +602,13 @@
 	<article class="post post-full card bg-white shadow-sm border-0 ">
 	<header class="post-header text-center">
 		
-		<a class="post-title" href="/2023/05/25/Problems/cf/div2_848/C/">算法题-from cf div2 848 Problem C</a>
+		<a class="post-title" href="/2023/06/14/Dev/Java/jar/">jar</a>
 		<div class="post-meta">
 			
 						
 						<div class="post-meta-detail post-meta-detail-time">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<time title="发布于 2023-5-25 21:27:55 | 编辑于 2023-5-25 19:51:25">2023-5-25 21:27
+							<time title="发布于 2023-6-14 14:53:19 | 编辑于 2023-6-14 14:55:46">2023-6-14 14:53
 							</time>
 						</div>
 					
@@ -627,7 +627,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-words">
 							<i class="fa fa-file-word-o" aria-hidden="true"></i>
-							597 字
+							123 字
 						</div>
 					
 						
@@ -635,7 +635,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-readingtime">
 							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
-							3 分钟
+							1 分钟
 						</div>
 					
 		</div>
@@ -643,11 +643,10 @@
 	</header>
 
 	<div class="post-content" id="post_content">
-		<h1 id="Codeforces-Round-848-Div-2"><a href="#Codeforces-Round-848-Div-2" class="headerlink" title="Codeforces Round #848 (Div. 2)"></a>Codeforces Round #848 (Div. 2)</h1><h2 id="C-Flexible-String"><a href="#C-Flexible-String" class="headerlink" title="C. Flexible String"></a>C. Flexible String</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定两个长度相同的字符串a，b，给定一个操作可以将a中的一个字符替换成任意字符，且操作的字母种类不超过k个，问a和b之间相同字串数量的最大值。</p>
-<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1778/problem/C">C. Flexible String</a></p>
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>首先，可以看出这样的性质，若a和b之间有一段长度为len的相同的子串，那么这一段子串所贡献的相同子串的数量为len(len + 1)&#x2F;2。然后由于题目说明a中不同字母的数量最多为10，那么就可以暴力枚举出选哪k个字母进行替换，其计算次数最多为$\binom{10}{5}&#x3D;252$，因此可以通过二进制枚举出所有选法，然后对于每一种选法通过一开始得到的结论，计算出相同子串的数量，最后取最大值即可。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> endl <span class="string">&#x27;\n&#x27;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> GCC optimize(2)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll = <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="keyword">using</span> ull = <span class="type">unsigned</span> <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="keyword">using</span> pii = pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll n, k;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    string a, b;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    set&lt;<span class="type">int</span>&gt; s;</span><br><span class="line">    map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; mp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i] != b[i])</span><br><span class="line">        &#123;</span><br><span class="line">            s.<span class="built_in">insert</span>(a[i]);</span><br><span class="line">            mp[a[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(s.<span class="built_in">size</span>() &lt;= k)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; n * (n + <span class="number">1</span>) / <span class="number">2</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        ll ans = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(j &lt; n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span>(j &lt; n &amp;&amp; a[j] != b[j])</span><br><span class="line">                j++;</span><br><span class="line">            <span class="type">int</span> k = j;</span><br><span class="line">            <span class="keyword">while</span>(k &lt; n &amp;&amp; a[k] == b[k])</span><br><span class="line">                k++;</span><br><span class="line">            ll len = k - j;</span><br><span class="line">            ans += len * (len + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">            j = k;</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ch;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> c : s)</span><br><span class="line">        &#123;</span><br><span class="line">            ch.<span class="built_in">push_back</span>(c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> le = ch.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; (<span class="number">1</span> &lt;&lt; le); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            ll tmp = <span class="number">0</span>;</span><br><span class="line">            set&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; le; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>((i &gt;&gt; j) &amp; <span class="number">1</span>)</span><br><span class="line">                    q.<span class="built_in">insert</span>(ch[j]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(q.<span class="built_in">size</span>() &gt; k) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="function">vector&lt;<span class="type">bool</span>&gt; <span class="title">op</span><span class="params">(n)</span></span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(a[j] == b[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    op[j] = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(q.<span class="built_in">find</span>(a[j]) != q.<span class="built_in">end</span>())</span><br><span class="line">                    &#123;</span><br><span class="line">                        op[j] = <span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(j &lt; n)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">while</span>(j &lt; n &amp;&amp; !op[j])</span><br><span class="line">                    j++;</span><br><span class="line">                <span class="type">int</span> k = j;</span><br><span class="line">                <span class="keyword">while</span>(k &lt; n &amp;&amp; op[k])</span><br><span class="line">                    k++;</span><br><span class="line">                ll len = k - j;</span><br><span class="line">                tmp += len * (len + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">                j = k;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">	cin.<span class="built_in">tie</span>(<span class="literal">nullptr</span>);</span><br><span class="line">	cout.<span class="built_in">tie</span>(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="type">int</span> t = <span class="number">1</span>;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	<span class="keyword">while</span>(t--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">solve</span>();</span><br><span class="line">	&#125;</span><br><span class="line">   	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+		<h2 id="将项目打包成jar"><a href="#将项目打包成jar" class="headerlink" title="将项目打包成jar"></a>将项目打包成jar</h2><h3 id="使用Maven"><a href="#使用Maven" class="headerlink" title="使用Maven"></a>使用Maven</h3><p>需要在Maven的配置文件pom.xml中配置项目的主类信息，配置信息如下。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-jar-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">archive</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">manifest</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">mainClass</span>&gt;</span>com.example.MainClass<span class="tag">&lt;/<span class="name">mainClass</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">archive</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<p>然后点击package即可在target文件夹下生成jar包</p>
 
 	</div>
 
@@ -695,7 +694,7 @@
 				<span class="btn-inner--icon"><i class="fa fa-twitter"></i></span>
 			</button>
 		</a>
-		<a target="_blank" class="no-pjax icon-telegram" href="https://telegram.me/share/url?url=http://example.com/2023/05/25/Problems/cf/div2_848/C/&text=算法题-from cf div2 848 Problem C" tooltip="分享到 Telegram">
+		<a target="_blank" class="no-pjax icon-telegram" href="https://telegram.me/share/url?url=http://example.com/2023/06/14/Dev/Java/jar/&text=jar" tooltip="分享到 Telegram">
 			<button class="btn btn-icon btn-primary" style="background: #42a5f5;border: none;">
 				<span class="btn-inner--icon"><i class="fa fa-telegram"></i></span>
 			</button>
@@ -712,11 +711,11 @@
 </div>
 <script type="text/javascript">
 	socialShare("#share", {
-	    title : '算法题-from cf div2 848 Problem C',
-	    description : 'Codeforces Round #848 (Div. 2)C. Flexible String题目...',
+	    title : 'jar',
+	    description : '将项目打包成jar使用Maven需要在Maven的配置文件pom.xml中配置项目的主类信息，配置信...',
 	    wechatQrcodeTitle : "分享到微信",
 	    wechatQrcodeHelper : '微信扫描二维码',
-	    source : 'http://example.com/2023/05/25/Problems/cf/div2_848/C/'
+	    source : 'http://example.com/2023/06/14/Dev/Java/jar/'
 	});
 	$("#share_show")[0].onclick = function(){
 		$("#share_container").addClass("opened");
@@ -765,7 +764,7 @@
 
 
 
-<div class="post-navigation card shadow-sm"><div class="post-navigation-item post-navigation-pre"><span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="/2023/05/25/Problems/cf/div3_847/E/" rel="prev"> 算法题-from cf div3 847 Problem E</a></div><div class="post-navigation-item post-navigation-next"><span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/2023/05/25/Problems/cf/div2_846/D/" rel="next"> 算法题-from cf div2 846 Problem D</a></div></div>
+<div class="post-navigation card shadow-sm"><div class="post-navigation-item post-navigation-pre"></div><div class="post-navigation-item post-navigation-next"><span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/2023/05/25/Problems/%E8%93%9D%E6%A1%A5%E6%9D%AF/k%E5%80%8D%E5%8C%BA%E9%97%B4/" rel="next"> 算法题-from 蓝桥杯 k倍区间</a></div></div>
 
 
 

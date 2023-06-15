@@ -8,15 +8,15 @@
 	
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	
-	<meta name="description" content="编译原理2.文法和语言的基本知识2.1程序设计语言的描述三要素  语法：对语言结构的定义 语义：描述了语言的含义 语用：从使用的角度描述语言  2.2字母表和符号串的基本概念2.2.1基本概念字母表 字母表是元素的非空有穷集合，字母表中的元素可以是字母、数字或其他符号  $\sum$&#x3D;{a,b,c}，$\theta$&#x3D;{0,1}，$\sum$和$\theta$都是字母表 符号（">
+	<meta name="description" content="编译原理1. 编译概述1.1 翻译程序和编译程序翻译程序：是指将用一种语言编写的程序翻译成与之等价的另一种程序的程序 编译程序：源语言是高级语言，目标语言是汇编语言或机器语言的低级语言，这样的翻译程序称为编译程序，即编译程序将高级语言所编写的源程序翻译成等价的机器语言或汇编语言的目标程序 源程序的生命周期 采用编译方式在计算机上执行用高级语言编写的程序，需分阶段进行，一般分为两大阶段，即编译阶段和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编译原理">
 <meta property="og:url" content="http://example.com/2023/05/25/Base/Compiler/index.html">
 <meta property="og:site_name" content="Origin_OvO Blog">
-<meta property="og:description" content="编译原理2.文法和语言的基本知识2.1程序设计语言的描述三要素  语法：对语言结构的定义 语义：描述了语言的含义 语用：从使用的角度描述语言  2.2字母表和符号串的基本概念2.2.1基本概念字母表 字母表是元素的非空有穷集合，字母表中的元素可以是字母、数字或其他符号  $\sum$&#x3D;{a,b,c}，$\theta$&#x3D;{0,1}，$\sum$和$\theta$都是字母表 符号（">
+<meta property="og:description" content="编译原理1. 编译概述1.1 翻译程序和编译程序翻译程序：是指将用一种语言编写的程序翻译成与之等价的另一种程序的程序 编译程序：源语言是高级语言，目标语言是汇编语言或机器语言的低级语言，这样的翻译程序称为编译程序，即编译程序将高级语言所编写的源程序翻译成等价的机器语言或汇编语言的目标程序 源程序的生命周期 采用编译方式在计算机上执行用高级语言编写的程序，需分阶段进行，一般分为两大阶段，即编译阶段和">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-25T13:27:54.893Z">
-<meta property="article:modified_time" content="2023-06-07T12:44:47.543Z">
+<meta property="article:modified_time" content="2023-06-14T15:10:23.270Z">
 <meta property="article:author" content="Origin_OvO">
 <meta name="twitter:card" content="summary">
 
@@ -502,7 +502,7 @@
 							<nav class="site-state">
 								<div class="site-state-item site-state-posts">
 									<a href="/archives">
-										<span class="site-state-item-count">75</span>
+										<span class="site-state-item-count">76</span>
 										<span class="site-state-item-name">文章</span>
 									</a>
 								</div>
@@ -608,7 +608,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-time">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<time title="发布于 2023-5-25 21:27:54 | 编辑于 2023-6-7 20:44:47">2023-5-25 21:27
+							<time title="发布于 2023-5-25 21:27:54 | 编辑于 2023-6-14 23:10:23">2023-5-25 21:27
 							</time>
 						</div>
 					
@@ -627,7 +627,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-words">
 							<i class="fa fa-file-word-o" aria-hidden="true"></i>
-							4.9k 字
+							8.4k 字
 						</div>
 					
 						
@@ -635,7 +635,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-readingtime">
 							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
-							18 分钟
+							31 分钟
 						</div>
 					
 		</div>
@@ -643,7 +643,20 @@
 	</header>
 
 	<div class="post-content" id="post_content">
-		<h1 id="编译原理"><a href="#编译原理" class="headerlink" title="编译原理"></a>编译原理</h1><h2 id="2-文法和语言的基本知识"><a href="#2-文法和语言的基本知识" class="headerlink" title="2.文法和语言的基本知识"></a>2.文法和语言的基本知识</h2><h3 id="2-1程序设计语言的描述"><a href="#2-1程序设计语言的描述" class="headerlink" title="2.1程序设计语言的描述"></a>2.1程序设计语言的描述</h3><p>三要素</p>
+		<h1 id="编译原理"><a href="#编译原理" class="headerlink" title="编译原理"></a>编译原理</h1><h2 id="1-编译概述"><a href="#1-编译概述" class="headerlink" title="1. 编译概述"></a>1. 编译概述</h2><h3 id="1-1-翻译程序和编译程序"><a href="#1-1-翻译程序和编译程序" class="headerlink" title="1.1 翻译程序和编译程序"></a>1.1 翻译程序和编译程序</h3><p>翻译程序：是指将用一种语言编写的程序翻译成与之等价的另一种程序的程序</p>
+<p>编译程序：源语言是高级语言，目标语言是汇编语言或机器语言的低级语言，这样的翻译程序称为编译程序，即编译程序将高级语言所编写的源程序翻译成等价的机器语言或汇编语言的目标程序</p>
+<h4 id="源程序的生命周期"><a href="#源程序的生命周期" class="headerlink" title="源程序的生命周期"></a>源程序的生命周期</h4><ol>
+<li>采用编译方式在计算机上执行用高级语言编写的程序，需分阶段进行，一般分为两大阶段，即编译阶段和运行阶段</li>
+<li>如果编译阶段生成的目标程序不是机器语言程序，而是汇编语言程序，则程序的执行需分为3个阶段，编译阶段、汇编阶段和运行阶段</li>
+</ol>
+<h3 id="1-2-编译过程"><a href="#1-2-编译过程" class="headerlink" title="1.2 编译过程"></a>1.2 编译过程</h3><ol>
+<li>词法分析：识别出一系列具有独立意义的单词</li>
+<li>语法分析：从单词符号串中识别出各种语法单位并进行语法检查</li>
+<li>语义分析及中间代码生成</li>
+<li>代码优化（非必须）</li>
+<li>目标代码生成</li>
+</ol>
+<h2 id="2-文法和语言的基本知识"><a href="#2-文法和语言的基本知识" class="headerlink" title="2.文法和语言的基本知识"></a>2.文法和语言的基本知识</h2><h3 id="2-1程序设计语言的描述"><a href="#2-1程序设计语言的描述" class="headerlink" title="2.1程序设计语言的描述"></a>2.1程序设计语言的描述</h3><p>三要素</p>
 <ol>
 <li>语法：对语言结构的定义</li>
 <li>语义：描述了语言的含义</li>
@@ -689,7 +702,7 @@
 <p>$V_N$是规则中非终结符号的集合</p>
 <p>$V_T$是规则中终结符号的集合</p>
 <p>P是文法规则的集合</p>
-<p>S是一个非终结符号，称为文法的开始符号（识别符号），<font color='yellow'>注意：可以用G[S]表示该文法的开始符为S</font></p>
+<p>S是一个非终结符号，称为文法的开始符号（识别符号），<font color='gold'>注意：可以用G[S]表示该文法的开始符为S</font></p>
 </blockquote>
 <p>对于若干个左部相同的规则，如下<br>$$<br>A\rightarrow a_1  \</p>
 <p>A\rightarrow a_2  \</p>
@@ -751,8 +764,8 @@
 <li><p>将正规文法的每个非终结符表示成关于它的一个正规方程</p>
 </li>
 <li><p>有如下求解规则：</p>
-<p>若x&#x3D;ax|b(或可表示成x&#x3D;ax+b)，则解为x&#x3D;$a^*b$</p>
-<p>若x&#x3D;xa|b(或可表示成x&#x3D;xa+b)，则解为x&#x3D;$ba^*$</p>
+<p>若x&#x3D;ax|b(或可表示成x&#x3D;ax+b)，则解为x&#x3D;$a^*b$（右递归规则，最终递归的终止在最右的字符）</p>
+<p>若x&#x3D;xa|b(或可表示成x&#x3D;xa+b)，则解为x&#x3D;$ba^*$（左递归规则，最终递归的终止在最左的字符）</p>
 </li>
 </ol>
 <h5 id="2-正规式到正规文法的转换"><a href="#2-正规式到正规文法的转换" class="headerlink" title="2.正规式到正规文法的转换"></a>2.正规式到正规文法的转换</h5><p>以下给出转化成右线性文法的方法</p>
@@ -870,15 +883,282 @@
 <li><p>LASTVT(A)&#x3D;${a|A\mathop{\Rightarrow}\limits^+…a或A\mathop{\Rightarrow}\limits^+…aB,a\in V_T, B\in V_N}$，该集合就是A推导出的句型 中最靠近末尾的终结符号集合</p>
 </li>
 </ol>
+<h3 id="4-5-LR分析法"><a href="#4-5-LR分析法" class="headerlink" title="4.5 LR分析法"></a>4.5 LR分析法</h3><p>LR分析法的关键部分在于构建LR分析表，LR分析表主要包括两个主要部分，ACTION[S, a]和GOTO[S, X]，分别称为分析动作表和状态转换表，ACTION[S, a]用于指明当状态S遇到输入符号a时应该执行的动作（移进或规约：移进表示将该输入字符压入分析栈；而规约则是用相应的规则进行规约，然后将规约所得的非终结符压入分析栈，之后再执行GOTO动作，并保持输入字符不变）；GOTO[S, X]用于指明当状态S面临分析栈的栈顶是非终结符X时，应该转移的下一个状态，一般用于执行规约之后执行该动作。</p>
+<h4 id="4-5-2-LR-0-分析法"><a href="#4-5-2-LR-0-分析法" class="headerlink" title="4.5.2 LR(0)分析法"></a>4.5.2 LR(0)分析法</h4><ul>
+<li><p>构造LR分析表的方法——构造识别文法所有规范句型活前缀DFA</p>
+</li>
+<li><p>LR(0)分析法的特点是不需要向前查看输入符号，就能进行规约，并且要求在其DFA中不能有冲突项目的存在，即“移进-规约冲突”或“规约-规约”冲突。</p>
+</li>
+<li><p>DFA的项目主要有四种</p>
+<ol>
+<li>规约项目：$A\rightarrow \alpha.$，其中$\alpha\in (V_N \cup V_T)^*$</li>
+<li>移进项目：$A\rightarrow \alpha . xB$，其中$\alpha ,\beta \in (V_N \cup V_T)^*, a\in V_T$</li>
+<li>待约项目：$A\rightarrow \alpha . B\beta$，其中$\alpha ,\beta \in (V_N \cup V_T)^*$，$B \in V_N$</li>
+<li>接受项目：$S’ \rightarrow S.$</li>
+</ol>
+<p>注意：移进规约项目是指项目集中同时出现了移进项目和规约项目</p>
+</li>
+</ul>
+<h4 id="4-5-3-SLR-1-分析法"><a href="#4-5-3-SLR-1-分析法" class="headerlink" title="4.5.3 SLR(1)分析法"></a>4.5.3 SLR(1)分析法</h4><ul>
+<li><p>为了解决上述可能存在的冲突问题，引入了SLR(1)分析法，该分析法在规约时会向前查看一个输入符号，只有当输入符号规约所得非终结符的FOLLOW集时，才会进行规约。</p>
+</li>
+<li><p>并且要保证冲突项目中，规约项目之间的FOLLOW集不能有交集且规约项目的FOLLOW集和移进项目的移进字符不能有交集。</p>
+</li>
+</ul>
+<h4 id="4-5-3-LR-1-分析法"><a href="#4-5-3-LR-1-分析法" class="headerlink" title="4.5.3 LR(1)分析法"></a>4.5.3 LR(1)分析法</h4><ul>
+<li>若是上述方法依然无法解决冲突问题，即发生了上述集合之间存在交集的情况，就要使用LR(1)分析法，来解决上述问题</li>
+<li>LR(1)分析法在构造DFA项目时引入了展望符（或称搜索符）的概念，即规约时仅仅当输入符号为展望符时，才会执行规约，保证在分析栈中形成的是有效的前缀，也就是说只有当规约过后能与之后的输入字符构成该文法某一规范句型的前缀时，才使用该规则进行规约。</li>
+</ul>
+<h4 id="4-5-4-LALR-1-分析法"><a href="#4-5-4-LALR-1-分析法" class="headerlink" title="4.5.4 LALR(1)分析法"></a>4.5.4 LALR(1)分析法</h4><ul>
+<li>主要用于化简LR(1)文法的状态数</li>
+<li>定义了同心集：除了展望符不同，其他部分都相同的状态</li>
+<li>将所有同心合并，从而将状态的数量减少</li>
+</ul>
+<h4 id="4-5-5-四种分析法的关系"><a href="#4-5-5-四种分析法的关系" class="headerlink" title="4.5.5 四种分析法的关系"></a>4.5.5 四种分析法的关系</h4><p>$LR(0) \subset SLR(1) \subset  LALR(1) \subset LR(1)$</p>
 <h2 id="5-语法制导翻译技术和中间代码生成"><a href="#5-语法制导翻译技术和中间代码生成" class="headerlink" title="5. 语法制导翻译技术和中间代码生成"></a>5. 语法制导翻译技术和中间代码生成</h2><h3 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h3><p>属性文法</p>
 <p>语法制导翻译的基本思想</p>
 <p>常见的几种中间代码的形式：逆波兰式、三元式、四元式、树形表示</p>
 <h3 id="5-2-属性文法"><a href="#5-2-属性文法" class="headerlink" title="5.2  属性文法"></a>5.2  属性文法</h3><blockquote>
 <p>属性文法：一个属性文法是在上下文无关文法的基础上，允许每个文法符号X（终结符或非终结符）根据处理的需要，定义与X相关联的属性。</p>
 </blockquote>
-<p>对属性的处理有计算、传递信息等 。形式化的定义，一个属性文法定义为一个三元组AG，AG&#x3D;(G,V,E)。其中G表示一个上下文无关文法，V表示属性的有穷集合，E表示属性的断言或谓词的有穷集。</p>
-<h3 id="综合属性和继承属性"><a href="#综合属性和继承属性" class="headerlink" title="综合属性和继承属性"></a>综合属性和继承属性</h3><p>属性分为两类，综合属性和继承属性，综合属性用于“自下而上”传递信息（在规约的时候传递信息）；而继承属性用于“自上而下”传递信息。</p>
-<h2 id="7-代码优化"><a href="#7-代码优化" class="headerlink" title="7. 代码优化"></a>7. 代码优化</h2>
+<p>即一个属性文法包含：</p>
+<ol>
+<li><p>一个上下文无关文法</p>
+</li>
+<li><p>一系列语义规则</p>
+<blockquote>
+<p>语义规则：为文法的每一个规则配备的计算属性的计算规则，称为语义规则</p>
+</blockquote>
+</li>
+</ol>
+<p>对属性的处理有计算、传递信息等 。形式化的定义，一个属性文法定义为一个三 元组AG，AG&#x3D;(G,V,E)。其中G表示一个上下文无关文法，V表示属性的有穷集合，E表示属性的断言或谓词的有穷集。</p>
+<h4 id="综合属性和继承属性"><a href="#综合属性和继承属性" class="headerlink" title="综合属性和继承属性"></a>综合属性和继承属性</h4><p>属性分为两类，综合属性和继承属性，综合属性用于“自下而上”传递信息（在规约的时候传递信息）；而继承属性用于“自上而下”传递信息。</p>
+<h3 id="5-3-语法制导翻译法"><a href="#5-3-语法制导翻译法" class="headerlink" title="5.3 语法制导翻译法"></a>5.3 语法制导翻译法</h3><ul>
+<li><p>在语法分析的过程中，随着分析过程，根据每个产生式所对应的语义子程序进行翻译的方法。</p>
+</li>
+<li><p>分为自底向上语法制导翻译和自顶向下语法制导翻译</p>
+</li>
+</ul>
+<h3 id="5-4-中间代码"><a href="#5-4-中间代码" class="headerlink" title="5.4 中间代码"></a>5.4 中间代码</h3><h4 id="5-4-1-逆波兰表达式（后缀表达式）"><a href="#5-4-1-逆波兰表达式（后缀表达式）" class="headerlink" title="5.4.1 逆波兰表达式（后缀表达式）"></a>5.4.1 逆波兰表达式（后缀表达式）</h4><p>数据结构的知识，在此不多赘述</p>
+<h4 id="5-4-2-图标表示法"><a href="#5-4-2-图标表示法" class="headerlink" title="5.4.2 图标表示法"></a>5.4.2 图标表示法</h4><h5 id="树形结构"><a href="#树形结构" class="headerlink" title="树形结构"></a>树形结构</h5><ul>
+<li><p>使用树形结构来表示一个表达式或者语句-</p>
+</li>
+<li><p>一般用叶子结点表示操作数，内部结点表示操作符</p>
+</li>
+</ul>
+<h5 id="无循环有向图（DAG）"><a href="#无循环有向图（DAG）" class="headerlink" title="无循环有向图（DAG）"></a>无循环有向图（DAG）</h5><ul>
+<li>内部节点表示操作符，其孩子结点为操作数</li>
+<li>公共子表达式具有多个父结点</li>
+</ul>
+<h4 id="4-4-3-三地址代码"><a href="#4-4-3-三地址代码" class="headerlink" title="4.4.3 三地址代码"></a>4.4.3 三地址代码</h4><p>三地址代码中两个地址用来表示操作数，一个地址用来存储结果，一般形式如下</p>
+<p>z :&#x3D;x op y</p>
+<h5 id="常用的三地址语句"><a href="#常用的三地址语句" class="headerlink" title="常用的三地址语句"></a>常用的三地址语句</h5><ul>
+<li><p>赋值语句</p>
+<p>x :&#x3D; y op z</p>
+<p>x :&#x3D; op y</p>
+<p>x :&#x3D; y</p>
+</li>
+<li><p>无条件转移语句</p>
+<p>goto L</p>
+</li>
+<li><p>条件转移</p>
+<p>if x relop y goto L</p>
+</li>
+<li><p>数组赋值</p>
+<p>x :&#x3D; y[i]</p>
+<p>x[i] :&#x3D; y</p>
+</li>
+</ul>
+<h5 id="三地址代码实现形式"><a href="#三地址代码实现形式" class="headerlink" title="三地址代码实现形式"></a>三地址代码实现形式</h5><ul>
+<li><p>四元式</p>
+<ul>
+<li>(op, arg1, arg2, result)</li>
+<li>存在大量的临时变量</li>
+<li>更直观的表示形式为三地址代码语句序列result :&#x3D; arg1 op arg2</li>
+</ul>
+</li>
+<li><p>三元式</p>
+<ul>
+<li>(op, arg1, arg2)</li>
+</ul>
+</li>
+<li><p>间接三元式</p>
+<ul>
+<li><p>三元式的指针表</p>
+</li>
+<li><p>通过在三元式前增加位置信息，从而便于在后面的三元式中引用该三元式的结果</p>
+</li>
+<li><p>间接三元式表中不存放重复的三元式</p>
+</li>
+<li><p>通过间接码表给出执行各三元式的顺序</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-4-赋值语句的翻译"><a href="#5-4-赋值语句的翻译" class="headerlink" title="5.4 赋值语句的翻译"></a>5.4 赋值语句的翻译</h3><p>语义动作的定义：</p>
+<p>lookup(id.name)：查找此名字在符号表中的入口，不存在则返回NULL</p>
+<p>emit(result :&#x3D; arg1 op arg2)：产生三地址语句</p>
+<p>newtemp()：生成新的临时变量，返回临时变量名的整数码</p>
+<p>NextCode：指向即将产生的下一条三地址语句，每调用一次emit函数，NextCode自动加1</p>
+<h3 id="5-5-布尔表达式的翻译"><a href="#5-5-布尔表达式的翻译" class="headerlink" title="5.5 布尔表达式的翻译"></a>5.5 布尔表达式的翻译</h3><h4 id="5-5-1-两种翻译方法"><a href="#5-5-1-两种翻译方法" class="headerlink" title="5.5.1 两种翻译方法"></a>5.5.1 两种翻译方法</h4><ol>
+<li><p>数值及算法（完全计算）</p>
+<p>完全计算出所有子表达式的值</p>
+</li>
+<li><p>短路计算法（不完全计算或解释法）</p>
+</li>
+</ol>
+<h4 id="5-5-2-控制语句中布尔表达式的翻译"><a href="#5-5-2-控制语句中布尔表达式的翻译" class="headerlink" title="5.5.2 控制语句中布尔表达式的翻译"></a>5.5.2 控制语句中布尔表达式的翻译</h4><p>控制语句$S\rightarrow if \quad E \quad then \quad S1 \quad else \quad S2$</p>
+<p>定义真出口和假出口</p>
+<p>真出口——转向语句S1，表示布尔表达式E为真时控制流向的转移目标</p>
+<p>假出口——转向语句S2，表示布尔表达式E为假时控制流向的转移目标 </p>
+<h5 id="一些常见的布尔表达式的四元式"><a href="#一些常见的布尔表达式的四元式" class="headerlink" title="一些常见的布尔表达式的四元式"></a>一些常见的布尔表达式的四元式</h5><table>
+<thead>
+<tr>
+<th align="center">四元式</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">(jnz, a,  ,p)</td>
+<td align="center">if a goto p</td>
+</tr>
+<tr>
+<td align="center">(jrop, a, b, p)</td>
+<td align="center">if a rop b goto p</td>
+</tr>
+<tr>
+<td align="center">(j, , , p)</td>
+<td align="center">goto p</td>
+</tr>
+</tbody></table>
+<h3 id="5-6-控制流语句的翻译"><a href="#5-6-控制流语句的翻译" class="headerlink" title="5.6 控制流语句的翻译"></a>5.6 控制流语句的翻译</h3><ul>
+<li><p>短路计算导致了转移目标不明确的问题</p>
+</li>
+<li><p>解决方法——拉链回填技术，即将有相同转移目标的转移代码的编号串起来形成链；在目标确定后，回填目标地址</p>
+</li>
+</ul>
+<h4 id="拉链回填技术的相关符号属性及语义函数"><a href="#拉链回填技术的相关符号属性及语义函数" class="headerlink" title="拉链回填技术的相关符号属性及语义函数"></a>拉链回填技术的相关符号属性及语义函数</h4><ul>
+<li>E.truelist：所有转向真出口的代码语句链</li>
+<li>E.falselist：所有转向假出口的代码语句链</li>
+<li>backpatch(code-list, target-code)：将目标地址target-code回填到代码语句链code-list中每条语句</li>
+<li>merge(code-list1, code-list2)：合并链code-list1和code-list2（包含的语句转移目标相同），且合并后code-list2是链首</li>
+<li>makelist(code-No)：建立含语句编号为code-No的链</li>
+<li>makelist()：建立空链</li>
+</ul>
+<h2 id="7-代码优化"><a href="#7-代码优化" class="headerlink" title="7. 代码优化"></a>7. 代码优化</h2><blockquote>
+<p>主要考察局部优化和循环优化 </p>
+</blockquote>
+<h3 id="7-1-优化概述"><a href="#7-1-优化概述" class="headerlink" title="7.1 优化概述"></a>7.1 优化概述</h3><p>根据代码优化是否涉及具体的计算机来划分，代码优化可分为两大类。</p>
+<ol>
+<li><p>一类是与机器有关的优化，这类优化一般在目标代码上进行</p>
+<ul>
+<li>对寄存器的优化</li>
+<li>多处理机的优化</li>
+<li>特殊指令的优化</li>
+</ul>
+</li>
+<li><p>另一类是与机器无关的优化，在中间代码上进行。根据优化对象所涉及的程序范围，可分为如下几类</p>
+<ul>
+<li>局部优化</li>
+<li>循环优化</li>
+<li>全局优化</li>
+</ul>
+</li>
+</ol>
+<h4 id="常用的优化方法"><a href="#常用的优化方法" class="headerlink" title="常用的优化方法"></a>常用的优化方法</h4><ol>
+<li><p>删除公共子表达式（删除多余运算）</p>
+<p>指在一个基本程序块内计算结果相同的子表达式，对相同的子表达式只在第一次出现时计算且仅计算一次，其结果暂存入T，以后重复出现的地方直接引用T</p>
+</li>
+<li><p>代码外提</p>
+<p>指将循环中的不变运算提到循环前面</p>
+</li>
+<li><p>强度削弱</p>
+<p>指在不改变运算结果的前提下，将程序中执行时间长的运算替换成执行时间短的运算（如将乘法替换成加法）</p>
+</li>
+<li><p>变换循环控制条件（删除归纳变量）</p>
+<p>若循环控制变量i与循环中某一变量T呈某种线性关系，且在循环中不引用i，除去i对运算结果没有影响，则可由T取代i的控制循环次数的作用</p>
+</li>
+<li><p>合并已知变量</p>
+<p>指参加运算的两个对象在编译时都是已知量，则可以在编译时直接计算出结果，不必等到运行时再计算</p>
+</li>
+<li><p>复写传播</p>
+<p>指尽量不引用那些在程序中只传递信息而不改变其值，也不影响其运算结果的变量。</p>
+</li>
+<li><p>删除无用赋值</p>
+<p>对赋值语句X&#x3D;Y，若在程序的任何地方都不引用X，则该赋值语句为无用赋值，可以删除</p>
+</li>
+</ol>
+<h3 id="7-2-局部优化"><a href="#7-2-局部优化" class="headerlink" title="7.2 局部优化"></a>7.2 局部优化</h3><h4 id="7-2-1-划分基本块的方法（必考）"><a href="#7-2-1-划分基本块的方法（必考）" class="headerlink" title="7.2.1 划分基本块的方法（必考）"></a>7.2.1 划分基本块的方法（必考）</h4><h5 id="1-入口语句"><a href="#1-入口语句" class="headerlink" title="1. 入口语句"></a>1. 入口语句</h5><ul>
+<li>四元式序列的第一个语句</li>
+<li>由条件转移语句或无条件转移语句能转到的语句</li>
+<li>紧跟在条件转移语句后面的语句</li>
+</ul>
+<h5 id="2-出口语句"><a href="#2-出口语句" class="headerlink" title="2. 出口语句"></a>2. 出口语句</h5><ul>
+<li>下一个入口语句的前导语句</li>
+<li>转移语句（包括转移语句本身）</li>
+<li>停语句（包括停语句本身）</li>
+</ul>
+<h5 id="3-构造基本块，删去那些不属于任何基本块的语句"><a href="#3-构造基本块，删去那些不属于任何基本块的语句" class="headerlink" title="3. 构造基本块，删去那些不属于任何基本块的语句"></a>3. 构造基本块，删去那些不属于任何基本块的语句</h5><p>在一个基本块内，一般实行3种优化：</p>
+<ol>
+<li>合并已知变量</li>
+<li>删除无用赋值</li>
+<li>删除多余运算</li>
+</ol>
+<h4 id="7-2-2-基本块的DAG表示"><a href="#7-2-2-基本块的DAG表示" class="headerlink" title="7.2.2 基本块的DAG表示"></a>7.2.2 基本块的DAG表示</h4><p>图见书上</p>
+<h5 id="四元式的分类"><a href="#四元式的分类" class="headerlink" title="四元式的分类"></a>四元式的分类</h5><p>按照四元式对应结点的后继结点个数可分为4类</p>
+<ol>
+<li>0型四元式</li>
+<li>1型四元式</li>
+<li>2型四元式</li>
+<li>3型四元式</li>
+</ol>
+<h5 id="由四元式序列构造DAG图"><a href="#由四元式序列构造DAG图" class="headerlink" title="由四元式序列构造DAG图"></a>由四元式序列构造DAG图</h5><p>见书上</p>
+<h4 id="7-2-3-利用DAG进行基本块的优化处理"><a href="#7-2-3-利用DAG进行基本块的优化处理" class="headerlink" title="7.2.3 利用DAG进行基本块的优化处理"></a>7.2.3 利用DAG进行基本块的优化处理</h4><p>按照构造DAG图结点的顺序书写四元式，即为优化后的结果</p>
+<h3 id="7-3-循环优化"><a href="#7-3-循环优化" class="headerlink" title="7.3 循环优化"></a>7.3 循环优化</h3><h4 id="7-3-1-程序流图与循环"><a href="#7-3-1-程序流图与循环" class="headerlink" title="7.3.1 程序流图与循环"></a>7.3.1 程序流图与循环</h4><ul>
+<li><p>按照各语句的执行顺序，构造程序流图（有向图）</p>
+</li>
+<li><p>确定为循环结构的一组代码必须满足：</p>
+<ol>
+<li>有且仅有一个入口结点</li>
+<li>代码序列构成强连通子图，任意两个结点之间必有一条通路</li>
+</ol>
+</li>
+</ul>
+<h4 id="7-3-2-循环查找"><a href="#7-3-2-循环查找" class="headerlink" title="7.3.2 循环查找"></a>7.3.2 循环查找</h4><h5 id="必经结点与必经结点集"><a href="#必经结点与必经结点集" class="headerlink" title="必经结点与必经结点集"></a>必经结点与必经结点集</h5><p> 必经结点：到达a的任一通路都要经过b，则称b是a的必经结点，记为b DOM a，读作b是a的必经结点。流图中结点a的所有必经结点的集合称为结点a的必经结点集，记作D(a)</p>
+<h5 id="运算性质"><a href="#运算性质" class="headerlink" title="运算性质"></a>运算性质</h5><p>对于必经结点有如下性质：</p>
+<ul>
+<li>循环的入口结点是循环中所有结点的必经结点</li>
+<li>自反性：对于任意结点，都有n DOM n</li>
+<li>传递性：对于流图中的任意结点a,b,c，若a DOM b且b DOM c，则a DOM c</li>
+<li>反对称性：a DOM b且b DOM a，当且仅当a&#x3D;b</li>
+</ul>
+<h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ol>
+<li>流图的首结点时图中所有结点的必经结点</li>
+<li>循环的首结点是循环中所有结点的必经结点</li>
+<li>每个结点a的必经结点集D(a)&#x3D;${a}\cup {a的所有直接前驱结点的必经结点集的交集}$</li>
+</ol>
+<h5 id="通过回边找循环"><a href="#通过回边找循环" class="headerlink" title="通过回边找循环"></a>通过回边找循环</h5><blockquote>
+<p>回边：设$a\rightarrow b$是流图中的一条有向边，若b DOM a，则称$a\rightarrow b$是流图中的一条回边</p>
+</blockquote>
+<p>若已知$a\rightarrow b$是回边，则根据如下规则找循环</p>
+<ol>
+<li>则该循环是由结点b出发的，</li>
+<li>所有有通路到达结点a但该通路又不经过b的结点组成</li>
+<li>且b是该循环的唯一入口</li>
+</ol>
+<h4 id="7-3-3-循环优化"><a href="#7-3-3-循环优化" class="headerlink" title="7.3.3 循环优化"></a>7.3.3 循环优化</h4><h5 id="1-代码外提"><a href="#1-代码外提" class="headerlink" title="1. 代码外提"></a>1. 代码外提</h5><p>将循环中的不变运算提到循环前面，且将其提到循环前面对运算结果不产生影响</p>
+<p>不变运算指其运算结果不受循环影响。需满足以下条件：</p>
+<ol>
+<li>循环中的必经结点</li>
+<li>且能够定值到达</li>
+</ol>
+<h5 id="2-强度削弱与删除归纳变量"><a href="#2-强度削弱与删除归纳变量" class="headerlink" title="2. 强度削弱与删除归纳变量"></a>2. 强度削弱与删除归纳变量</h5><h6 id="强度削弱"><a href="#强度削弱" class="headerlink" title="强度削弱"></a>强度削弱</h6><p>强度削弱是将程序中执行时间长的运算替换成执行时间短的运算</p>
+<p>强度削弱一般出现在如下情况：</p>
+<ol>
+<li>循环中有关于变量i的递归赋值$i&#x3D;i\pm C$，且循环中关于变量T的赋值运算可化归为$T&#x3D;K*i\pm C_1$，（其中C,K,$C_1$都是循环不变量），那么可以对T的赋值运算进行强度削弱</li>
+</ol>
+<h6 id="删除归纳变量"><a href="#删除归纳变量" class="headerlink" title="删除归纳变量"></a>删除归纳变量</h6><p>删除归纳变量在强度削弱之后进行</p>
+
 	</div>
 
 	
@@ -943,10 +1223,7 @@
 <script type="text/javascript">
 	socialShare("#share", {
 	    title : '编译原理',
-	    description : '编译原理2.文法和语言的基本知识2.1程序设计语言的描述三要素
-
-语法：对语言结构的定义
-语义：描述...',
+	    description : '编译原理1. 编译概述1.1 翻译程序和编译程序翻译程序：是指将用一种语言编写的程序翻译成与之等价的...',
 	    wechatQrcodeTitle : "分享到微信",
 	    wechatQrcodeHelper : '微信扫描二维码',
 	    source : 'http://example.com/2023/05/25/Base/Compiler/'
@@ -998,7 +1275,7 @@
 
 
 
-<div class="post-navigation card shadow-sm"><div class="post-navigation-item post-navigation-pre"><span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="/2023/05/25/Base/ComputerComposition/" rel="prev"> </a></div><div class="post-navigation-item post-navigation-next"><span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/2023/05/25/Base/CG/" rel="next"> </a></div></div>
+<div class="post-navigation card shadow-sm"><div class="post-navigation-item post-navigation-pre"><span class="page-navigation-extra-text"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>上一篇</span><a href="/2023/05/25/Base/ComputerComposition/" rel="prev"> </a></div><div class="post-navigation-item post-navigation-next"><span class="page-navigation-extra-text">下一篇 <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></span><a href="/2023/05/25/Base/CG/" rel="next"> 计算机图形学(课内)</a></div></div>
 
 
 
