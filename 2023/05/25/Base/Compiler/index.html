@@ -16,7 +16,7 @@
 <meta property="og:description" content="编译原理1. 编译概述1.1 翻译程序和编译程序翻译程序：是指将用一种语言编写的程序翻译成与之等价的另一种程序的程序 编译程序：源语言是高级语言，目标语言是汇编语言或机器语言的低级语言，这样的翻译程序称为编译程序，即编译程序将高级语言所编写的源程序翻译成等价的机器语言或汇编语言的目标程序 源程序的生命周期 采用编译方式在计算机上执行用高级语言编写的程序，需分阶段进行，一般分为两大阶段，即编译阶段和">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-25T13:27:54.893Z">
-<meta property="article:modified_time" content="2023-06-14T15:10:23.270Z">
+<meta property="article:modified_time" content="2023-06-27T11:28:18.353Z">
 <meta property="article:author" content="Origin_OvO">
 <meta name="twitter:card" content="summary">
 
@@ -608,7 +608,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-time">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<time title="发布于 2023-5-25 21:27:54 | 编辑于 2023-6-14 23:10:23">2023-5-25 21:27
+							<time title="发布于 2023-5-25 21:27:54 | 编辑于 2023-6-27 19:28:18">2023-5-25 21:27
 							</time>
 						</div>
 					
@@ -627,7 +627,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-words">
 							<i class="fa fa-file-word-o" aria-hidden="true"></i>
-							8.4k 字
+							8.5k 字
 						</div>
 					
 						
@@ -635,7 +635,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-readingtime">
 							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
-							31 分钟
+							32 分钟
 						</div>
 					
 		</div>
@@ -679,8 +679,8 @@
 <h5 id="符号串的幂运算"><a href="#符号串的幂运算" class="headerlink" title="符号串的幂运算"></a>符号串的幂运算</h5><p>假设有符号串x，则其幂运算定义如下<br>$$<br>x^0&#x3D;\varepsilon \<br>x^1&#x3D;x \<br>x^2&#x3D;xx\<br>…… \<br>x^n &#x3D; xx…xx(n个x)<br>$$</p>
 <h5 id="集合的幂运算"><a href="#集合的幂运算" class="headerlink" title="集合的幂运算"></a>集合的幂运算</h5><p>集合的幂运算，就是若干个集合累次相乘，其定义如下<br>$$<br>A^0&#x3D;{\varepsilon} \<br>A^1&#x3D;A \<br>A^2&#x3D;AA \<br>…<br>$$</p>
 <h5 id="集合的正闭包和闭包"><a href="#集合的正闭包和闭包" class="headerlink" title="集合的正闭包和闭包"></a>集合的正闭包和闭包</h5><p>假设有集合A，其正闭包定义为$A^+ &#x3D; A^1 \cup A^2 \cup … \cup A^n$</p>
-<p>其闭包定义为，$A^*&#x3D;{\varepsilon}A^1 \cup A^2 \cup … \cup A^n$</p>
-<p>即闭包比正闭包多了一个空符号串</p>
+<p>其闭包定义为，$A^*&#x3D;{\varepsilon}\cup A^1 \cup A^2 \cup … \cup A^n$</p>
+<p>即闭包比正闭包多了一个空 符号串</p>
 <h3 id="2-3文法和语言的形式定义"><a href="#2-3文法和语言的形式定义" class="headerlink" title="2.3文法和语言的形式定义"></a>2.3文法和语言的形式定义</h3><h4 id="2-3-1形式语言"><a href="#2-3-1形式语言" class="headerlink" title="2.3.1形式语言"></a>2.3.1形式语言</h4><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>每个形式语言都是某个字母表上按某种规则构成的所有符号串的集合，即任何字母表上的符号串的集合都可以定义为一个形式语言</p>
 <h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>形式语言有两种描述方法</p>
 <ol>
@@ -712,7 +712,7 @@
 <h4 id="2-3-3语言的形式定义"><a href="#2-3-3语言的形式定义" class="headerlink" title="2.3.3语言的形式定义"></a>2.3.3语言的形式定义</h4><h5 id="1-直接推导"><a href="#1-直接推导" class="headerlink" title="1.直接推导"></a>1.直接推导</h5><p>由一个符号串推导出另一个符号串， 且仅使用一次规则的过程。推导符号为$ \Rightarrow$</p>
 <p>，注意与规则符号$\rightarrow$区分</p>
 <h5 id="2-推导"><a href="#2-推导" class="headerlink" title="2.推导"></a>2.推导</h5><p>一个符号串经过一次或若干次规则得到另一个符号串的过程，记为$a_0 \mathop{\Rightarrow}\limits^+ a_n$，注意这里至少要经过一次直接推导</p>
-<h5 id="3-广义推导"><a href="#3-广义推导" class="headerlink" title="3.广义推导"></a>3.广义推导</h5><p>$a_0\mathop\Rightarrow\limits^+ a_n$，表示$a_0$经过0步或若干步直接推导，得到$a_n$，即$a_0&#x3D;a_n或者a_0\mathop\Rightarrow\limits^+a_n$</p>
+<h5 id="3-广义推导"><a href="#3-广义推导" class="headerlink" title="3.广义推导"></a>3.广义推导</h5><p>$a_0\mathop\Rightarrow\limits^* a_n$，表示$a_0$经过0步或若干步直接推导，得到$a_n$，即$a_0&#x3D;a_n或者a_0\mathop\Rightarrow\limits^+a_n$</p>
 <h5 id="4-句型和句子"><a href="#4-句型和句子" class="headerlink" title="4.句型和句子"></a>4.句型和句子</h5><p>假设有文法G[S]，如果$S\mathop\Rightarrow\limits^<em>x，x\in (V_N \cup V_T)^</em>$，则称x为文法G[S]的句型，即句型包括由开始符经过广义推导产生的所有符号串；如果有$S\mathop\Rightarrow\limits^<em>x, x\in V_T^</em>$，则称x是文法G[S]的句子，即句子仅仅由终结符号组成的符号串。由此可以看出句子是句型的子集。</p>
 <h5 id="5-语言"><a href="#5-语言" class="headerlink" title="5.语言"></a>5.语言</h5><p>由文法G[S]产生的所有句子的集合即为语言。</p>
 <h4 id="2-3-4规范推导和规范规约"><a href="#2-3-4规范推导和规范规约" class="headerlink" title="2.3.4规范推导和规范规约"></a>2.3.4规范推导和规范规约</h4><h5 id="规范推导"><a href="#规范推导" class="headerlink" title="规范推导"></a>规范推导</h5><p>最左推导：对于推导序列中的每一步直接推导$a\Rightarrow b$，都是对a中最左边的非终结符进行替换</p>
@@ -915,7 +915,18 @@
 <li>将所有同心合并，从而将状态的数量减少</li>
 </ul>
 <h4 id="4-5-5-四种分析法的关系"><a href="#4-5-5-四种分析法的关系" class="headerlink" title="4.5.5 四种分析法的关系"></a>4.5.5 四种分析法的关系</h4><p>$LR(0) \subset SLR(1) \subset  LALR(1) \subset LR(1)$</p>
-<h2 id="5-语法制导翻译技术和中间代码生成"><a href="#5-语法制导翻译技术和中间代码生成" class="headerlink" title="5. 语法制导翻译技术和中间代码生成"></a>5. 语法制导翻译技术和中间代码生成</h2><h3 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h3><p>属性文法</p>
+<h2 id="5-语法制导翻译技术和中间代码生成"><a href="#5-语法制导翻译技术和中间代码生成" class="headerlink" title="5. 语法制导翻译技术和中间代码生成"></a>5. 语法制导翻译技术和中间代码生成</h2><h3 id="静态语义检查"><a href="#静态语义检查" class="headerlink" title="静态语义检查"></a>静态语义检查</h3><ol>
+<li>类型检查</li>
+<li>控制流检查</li>
+<li>一致性检查</li>
+<li>相关名字检查</li>
+</ol>
+<h3 id="翻译为中间代码的好处"><a href="#翻译为中间代码的好处" class="headerlink" title="翻译为中间代码的好处"></a>翻译为中间代码的好处</h3><ol>
+<li>便于进行与机器无关的代码优化</li>
+<li>便于编译程序的建立与移植</li>
+<li>使编译程序的结构在逻辑上更为简单明确，以中间语言为界面，编译前端和后端的接口更清晰</li>
+</ol>
+<h3 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h3><p>属性文法</p>
 <p>语法制导翻译的基本思想</p>
 <p>常见的几种中间代码的形式：逆波兰式、三元式、四元式、树形表示</p>
 <h3 id="5-2-属性文法"><a href="#5-2-属性文法" class="headerlink" title="5.2  属性文法"></a>5.2  属性文法</h3><blockquote>
@@ -931,7 +942,7 @@
 </blockquote>
 </li>
 </ol>
-<p>对属性的处理有计算、传递信息等 。形式化的定义，一个属性文法定义为一个三 元组AG，AG&#x3D;(G,V,E)。其中G表示一个上下文无关文法，V表示属性的有穷集合，E表示属性的断言或谓词的有穷集。</p>
+<p>对属性的处理有计算、传递信息等 。形式化的定义，一个属性文法定义为一个三元组AG，AG&#x3D;(G,V,E)。其中G表示一个上下文无关文法，V表示属性的有穷集合，E表示属性的断言或谓词的有穷集。</p>
 <h4 id="综合属性和继承属性"><a href="#综合属性和继承属性" class="headerlink" title="综合属性和继承属性"></a>综合属性和继承属性</h4><p>属性分为两类，综合属性和继承属性，综合属性用于“自下而上”传递信息（在规约的时候传递信息）；而继承属性用于“自上而下”传递信息。</p>
 <h3 id="5-3-语法制导翻译法"><a href="#5-3-语法制导翻译法" class="headerlink" title="5.3 语法制导翻译法"></a>5.3 语法制导翻译法</h3><ul>
 <li><p>在语法分析的过程中，随着分析过程，根据每个产生式所对应的语义子程序进行翻译的方法。</p>
@@ -939,7 +950,7 @@
 <li><p>分为自底向上语法制导翻译和自顶向下语法制导翻译</p>
 </li>
 </ul>
-<h3 id="5-4-中间代码"><a href="#5-4-中间代码" class="headerlink" title="5.4 中间代码"></a>5.4 中间代码</h3><h4 id="5-4-1-逆波兰表达式（后缀表达式）"><a href="#5-4-1-逆波兰表达式（后缀表达式）" class="headerlink" title="5.4.1 逆波兰表达式（后缀表达式）"></a>5.4.1 逆波兰表达式（后缀表达式）</h4><p>数据结构的知识，在此不多赘述</p>
+<h3 id="5-4-中间代码"><a href="#5-4-中间代码" class="headerlink" title="5.4 中间代码"></a>5.4 中间代码</h3><h4 id="5-4-1-逆波兰表达式（后缀表达式）"><a href="#5-4-1-逆波兰表达式（后缀表达式）" class="headerlink" title="5.4.1 逆波兰表达式（后缀表达式）"></a>5.4.1 逆波兰表达式（后缀表达式）</h4><p>数据结构的知识，在此不多赘述  </p>
 <h4 id="5-4-2-图标表示法"><a href="#5-4-2-图标表示法" class="headerlink" title="5.4.2 图标表示法"></a>5.4.2 图标表示法</h4><h5 id="树形结构"><a href="#树形结构" class="headerlink" title="树形结构"></a>树形结构</h5><ul>
 <li><p>使用树形结构来表示一个表达式或者语句-</p>
 </li>
@@ -950,7 +961,7 @@
 <li>内部节点表示操作符，其孩子结点为操作数</li>
 <li>公共子表达式具有多个父结点</li>
 </ul>
-<h4 id="4-4-3-三地址代码"><a href="#4-4-3-三地址代码" class="headerlink" title="4.4.3 三地址代码"></a>4.4.3 三地址代码</h4><p>三地址代码中两个地址用来表示操作数，一个地址用来存储结果，一般形式如下</p>
+<h4 id="5-4-3-三地址代码"><a href="#5-4-3-三地址代码" class="headerlink" title="5.4.3 三地址代码"></a>5.4.3 三地址代码</h4><p>三地址代码中两个地址用来表示操作数，一个地址用来存储结果，一般形式如下</p>
 <p>z :&#x3D;x op y</p>
 <h5 id="常用的三地址语句"><a href="#常用的三地址语句" class="headerlink" title="常用的三地址语句"></a>常用的三地址语句</h5><ul>
 <li><p>赋值语句</p>

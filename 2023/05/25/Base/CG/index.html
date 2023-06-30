@@ -16,7 +16,7 @@
 <meta property="og:description" content="计算机图形学0.重点章节（个人猜测）第二章（帧缓冲存储器相关计算——容量计算、存储地址计算）第三章（画线算法——中点算法）第五章（变换矩阵）1.绪论1.1.1 计算机图形学定义及分类定义ISO定义：计算机图形学是研究通过计算机将数据转换为图形，并在专门显示设备上显示的原理、方法和技术的学科。简单地说，计算机图形学就是研究怎样用计算机生成、处理和显示图形地一门学科。 分类主要分为两类：  非交互式计">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-25T13:27:54.889Z">
-<meta property="article:modified_time" content="2023-06-15T11:39:40.862Z">
+<meta property="article:modified_time" content="2023-06-23T07:43:33.180Z">
 <meta property="article:author" content="Origin_OvO">
 <meta name="twitter:card" content="summary">
 
@@ -608,7 +608,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-time">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<time title="发布于 2023-5-25 21:27:54 | 编辑于 2023-6-15 19:39:40">2023-5-25 21:27
+							<time title="发布于 2023-5-25 21:27:54 | 编辑于 2023-6-23 15:43:33">2023-5-25 21:27
 							</time>
 						</div>
 					
@@ -627,7 +627,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-words">
 							<i class="fa fa-file-word-o" aria-hidden="true"></i>
-							7.6k 字
+							10.3k 字
 						</div>
 					
 						
@@ -635,7 +635,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-readingtime">
 							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
-							29 分钟
+							40 分钟
 						</div>
 					
 		</div>
@@ -794,7 +794,7 @@
 <li>虚拟现实力反馈器</li>
 <li>数据衣</li>
 </ol>
-<h2 id="3-基本图形生成算法"><a href="#3-基本图形生成算法" class="headerlink" title="3.基本图形生成算法"></a>3.基本图形生成算法</h2><h3 id="3-1直线的扫描转换（光栅化）"><a href="#3-1直线的扫描转换（光栅化）" class="headerlink" title="3.1直线的扫描转换（光栅化）"></a>3.1直线的扫描转换（光栅化）</h3><p>分为两个步骤：</p>
+<h2 id="3-基本图形生成算法（重点章节）"><a href="#3-基本图形生成算法（重点章节）" class="headerlink" title="3.基本图形生成算法（重点章节）"></a>3.基本图形生成算法（重点章节）</h2><h3 id="3-1直线的扫描转换（光栅化）"><a href="#3-1直线的扫描转换（光栅化）" class="headerlink" title="3.1直线的扫描转换（光栅化）"></a>3.1直线的扫描转换（光栅化）</h3><p>分为两个步骤：</p>
 <ol>
 <li>确定最佳逼近于图形的像素集合</li>
 <li>根据图形的颜色或其他属性对这些像素集合进行赋值</li>
@@ -1112,13 +1112,216 @@
 <h4 id="2-窗口到试图区的变换"><a href="#2-窗口到试图区的变换" class="headerlink" title="2. 窗口到试图区的变换"></a>2. 窗口到试图区的变换</h4><p>为了将窗口中的图形如实显示到视图区，必须进行窗口到视图区的变换</p>
 <p>通过长度之间的比例系数相等，得到两个坐标系之间的映射关系</p>
 <h3 id="5-2-二维图形几何变换"><a href="#5-2-二维图形几何变换" class="headerlink" title="5.2 二维图形几何变换"></a>5.2 二维图形几何变换</h3><h4 id="5-2-1-二维图形几何基本变换"><a href="#5-2-1-二维图形几何基本变换" class="headerlink" title="5.2.1 二维图形几何基本变换"></a>5.2.1 二维图形几何基本变换</h4><h5 id="1-平移变换"><a href="#1-平移变换" class="headerlink" title="1. 平移变换"></a>1. 平移变换</h5><p>$$<br>[x^{‘}\quad y^{‘}]&#x3D;[x \quad y] + [T_x\quad T_y]<br>$$</p>
-<h5 id="2-比例变换"><a href="#2-比例变换" class="headerlink" title="2. 比例变换"></a>2. 比例变换</h5><p>$$<br>[x^{‘}\quad y^{‘}]&#x3D;[x \quad y]\left[\ \begin{matrix} S_x \quad 0 \0 \quad S_y  \end{matrix} \right]<br>$$</p>
+<h5 id="2-比例变换（相对于原点）"><a href="#2-比例变换（相对于原点）" class="headerlink" title="2. 比例变换（相对于原点）"></a>2. 比例变换（相对于原点）</h5><p>$$<br>[x^{‘}\quad y^{‘}]&#x3D;[x \quad y]\left[\ \begin{matrix} S_x \quad 0 \0 \quad S_y  \end{matrix} \right]<br>$$</p>
 <h5 id="3-旋转变换"><a href="#3-旋转变换" class="headerlink" title="3. 旋转变换"></a>3. 旋转变换</h5><p>绕原点逆时针旋转的变换表示如下：<br>$$<br>[x^{‘}\quad y^{‘}]&#x3D;[x \quad y]\left[\ \begin{matrix} cos\theta \quad sin\theta \-sin\theta \quad cos\theta  \end{matrix} \right]<br>$$</p>
 <h4 id="5-2-2-齐次坐标技术"><a href="#5-2-2-齐次坐标技术" class="headerlink" title="5.2.2 齐次坐标技术"></a>5.2.2 齐次坐标技术</h4><p>由上述基本变换的变换表达形式可以看出，平移和其他变换的表示不统一，为了统一这些变换的处理形式，引入了齐次坐标技术，本质上就是增加了一维。通过齐次坐标技术，上述基本变换的表示形式得以统一，如下。</p>
-<h5 id="1-平移变换-1"><a href="#1-平移变换-1" class="headerlink" title="1. 平移变换"></a>1. 平移变换</h5><p>$$<br>[x^{‘}\quad y^{‘}]&#x3D;[x \quad y]\left[ \begin{matrix} 1 &amp; 0 &amp; 0\0 &amp; 1 &amp; 0\T_x &amp; T_y &amp; 1  \end{matrix} \right]<br>$$</p>
-<h5 id="2-比例变换-1"><a href="#2-比例变换-1" class="headerlink" title="2. 比例变换"></a>2. 比例变换</h5><p>$$<br>[x^{‘}\quad y^{‘}]&#x3D;[x \quad y]\left[\ \begin{matrix} S_x \quad 0 \quad0\0 \quad S_y\quad 0\0\quad 0 \quad 1  \end{matrix} \right]<br>$$</p>
-<h5 id="3-旋转变换-1"><a href="#3-旋转变换-1" class="headerlink" title="3. 旋转变换"></a>3. 旋转变换</h5><p>$$<br>[x^{‘}\quad y^{‘}]&#x3D;[x \quad y]\left[\ \begin{matrix} cos\theta &amp; sin\theta &amp; 0\-sin\theta &amp; cos\theta &amp; 0\0 &amp; 0 &amp; 1  \end{matrix} \right]<br>$$</p>
-<h5 id="4-对称变换"><a href="#4-对称变换" class="headerlink" title="4. 对称变换"></a>4. 对称变换</h5><h5 id="5-错切变换"><a href="#5-错切变换" class="headerlink" title="5. 错切变换"></a>5. 错切变换</h5><h4 id="5-2-3-二维组合变换"><a href="#5-2-3-二维组合变换" class="headerlink" title="5.2.3 二维组合变换"></a>5.2.3 二维组合变换</h4><p>通过进行多次基本变换得到</p>
+<h5 id="1-平移变换-1"><a href="#1-平移变换-1" class="headerlink" title="1. 平移变换"></a>1. 平移变换</h5><p>$$<br>[x^{‘} &amp; y^{‘} &amp; 1]&#x3D;[x &amp; y &amp; 1]\left[ \begin{matrix} 1 &amp; 0 &amp; 0\0 &amp; 1 &amp; 0\T_x &amp; T_y &amp; 1  \end{matrix} \right]<br>$$</p>
+<h5 id="2-比例变换"><a href="#2-比例变换" class="headerlink" title="2. 比例变换"></a>2. 比例变换</h5><p>$$<br>[x^{‘} &amp; y^{‘} &amp; 1]&#x3D;[x &amp; y &amp; 1]\left[\ \begin{matrix} S_x \quad 0 \quad0\0 \quad S_y\quad 0\0\quad 0 \quad 1  \end{matrix} \right]<br>$$</p>
+<h5 id="3-旋转变换-1"><a href="#3-旋转变换-1" class="headerlink" title="3. 旋转变换"></a>3. 旋转变换</h5><p>$$<br>[x^{‘} &amp; y^{‘} &amp; 1]&#x3D;[x &amp; y &amp; 1]\left[\ \begin{matrix} cos\theta &amp; sin\theta &amp; 0\-sin\theta &amp; cos\theta &amp; 0\0 &amp; 0 &amp; 1  \end{matrix} \right]<br>$$</p>
+<h5 id="4-对称变换"><a href="#4-对称变换" class="headerlink" title="4. 对称变换"></a>4. 对称变换</h5><ol>
+<li><p>关于y轴对称<br>$$<br>[x^{‘} &amp; y^{‘} &amp; 1]&#x3D;[x &amp; y &amp; 1]\left[\ \begin{matrix} -1 &amp; 0 &amp; 0\0 &amp; 1 &amp; 0\0 &amp; 0 &amp; 1  \end{matrix} \right]<br>$$</p>
+</li>
+<li><p>关于x轴对称<br>$$<br>[x^{‘} &amp; y^{‘} &amp; 1]&#x3D;[x &amp; y &amp; 1]\left[\ \begin{matrix} 1 &amp; 0 &amp; 0\0 &amp; -1 &amp; 0\0 &amp; 0 &amp; 1  \end{matrix} \right]<br>$$</p>
+</li>
+<li><p>关于原点对称<br>$$<br>[x^{‘} &amp; y^{‘} &amp; 1]&#x3D;[x &amp; y &amp; 1]\left[\ \begin{matrix} -1 &amp; 0 &amp; 0\0 &amp; -1 &amp; 0\0 &amp; 0 &amp; 1  \end{matrix} \right]<br>$$</p>
+</li>
+<li><p>关于$45^{\degree}$或（y&#x3D;x）对称<br>$$<br>[x^{‘} &amp; y^{‘} &amp; 1]&#x3D;[x &amp; y &amp; 1]\left[\ \begin{matrix} 0 &amp; 1 &amp; 0\1 &amp; 0 &amp; 0\0 &amp; 0 &amp; 1  \end{matrix} \right]<br>$$</p>
+</li>
+<li><p>关于$-45^{\degree}$或（y&#x3D;-x）对称<br>$$<br>[x^{‘} &amp; y^{‘} &amp; 1]&#x3D;[x &amp; y &amp; 1]\left[\ \begin{matrix} 0 &amp; -1 &amp; 0\-1 &amp; 0 &amp; 0\0 &amp; 0 &amp; 1  \end{matrix} \right]<br>$$</p>
+</li>
+<li></li>
+</ol>
+<h5 id="5-错切变换"><a href="#5-错切变换" class="headerlink" title="5. 错切变换"></a>5. 错切变换</h5><ol>
+<li><p>沿x轴方向关于y轴错切<br>$$<br>[x^{‘} &amp; y^{‘} &amp; 1]&#x3D;[x &amp; y &amp; 1]\left[\ \begin{matrix} 1 &amp; 0 &amp; 0\a &amp; 1 &amp; 0\0 &amp; 0 &amp; 1  \end{matrix} \right]<br>$$</p>
+</li>
+<li><p>沿y轴方向关于x轴错切<br>$$<br>[x^{‘} &amp; y^{‘} &amp; 1]&#x3D;[x &amp; y &amp; 1]\left[\ \begin{matrix} 1 &amp; b &amp; 0\0 &amp; 1 &amp; 0\0 &amp; 0 &amp; 1  \end{matrix} \right]<br>$$</p>
+</li>
+<li></li>
+</ol>
+<h4 id="5-2-3-二维组合变换"><a href="#5-2-3-二维组合变换" class="headerlink" title="5.2.3 二维组合变换"></a>5.2.3 二维组合变换</h4><p>通过进行多次基本变换得到</p>
+<ol>
+<li><p>相对于任意点$(x_0,y_0)$的比例变换</p>
+<p>$将该点变换到原点\rightarrow 执行关于原点的比例变换 \rightarrow 再将该点恢复原来的位置$</p>
+</li>
+<li><p>相对于任意点$(x_0,y_0)$的旋转变换</p>
+<p>$将旋转点变换到原点\rightarrow 执行关于原点的比例变换 \rightarrow 将旋转点恢复原位$</p>
+<p>将这几个矩阵相乘（右乘）即可以得到总的变换矩阵</p>
+</li>
+</ol>
+<h3 id="5-3-三维图形几何变换"><a href="#5-3-三维图形几何变换" class="headerlink" title="5.3 三维图形几何变换"></a>5.3 三维图形几何变换</h3><h4 id="5-3-1-三维空间坐标系"><a href="#5-3-1-三维空间坐标系" class="headerlink" title="5.3.1 三维空间坐标系"></a>5.3.1 三维空间坐标系</h4><p>若使用右手坐标系，则逆时针方向为旋转的正方向</p>
+<p>若使用左手坐标系，则顺时针方向为旋转的正方向</p>
+<h4 id="5-3-2-基本的三维图形几何变换"><a href="#5-3-2-基本的三维图形几何变换" class="headerlink" title="5.3.2 基本的三维图形几何变换"></a>5.3.2 基本的三维图形几何变换</h4><ol>
+<li><p>平移变换<br>$$<br>T&#x3D;\left[ \begin{matrix} 1 &amp; 0 &amp; 0 &amp; 0\ 0 &amp; 1 &amp; 0 &amp; 0\ 0 &amp; 0 &amp; 1 &amp; 0\ T_x &amp; T_y &amp; T_z &amp; 1 \end{matrix} \right]<br>$$</p>
+</li>
+<li><p>比例变换（关于原点）<br>$$<br>T&#x3D;\left[ \begin{matrix} S_x &amp; 0 &amp; 0 &amp; 0\ 0 &amp; S_y &amp; 0 &amp; 0\ 0 &amp; 0 &amp; S_z &amp; 0\ 0 &amp; 0 &amp; 0 &amp; 1 \end{matrix} \right]<br>$$<br>当变换矩阵为如下形式时，<br>$$<br>T&#x3D;\left[ \begin{matrix} 1 &amp; 0 &amp; 0 &amp; 0\ 0 &amp; 1 &amp; 0 &amp; 0\ 0 &amp; 0 &amp; 1 &amp; 0\0 &amp; 0 &amp; 0 &amp; s \end{matrix} \right]<br>$$<br>$x^{‘}&#x3D;\frac{x}{s}$</p>
+<p>$y^{‘}&#x3D;\frac{y}{s}$</p>
+<p>$z^{‘}&#x3D;\frac{z}{s}$</p>
+</li>
+<li><p>旋转变换（关于原点）<font color='gold'>(重点记忆)</font></p>
+<p>绕哪个轴，哪个轴的坐标就不变（绕y轴旋转需要特殊记忆）</p>
+<ol>
+<li><p>绕x轴旋转<br>$$<br>T&#x3D;\left[ \begin{matrix} 1 &amp; 0 &amp; 0 &amp; 0\ 0 &amp; cos\theta &amp; sin\theta &amp; 0\ 0 &amp; -sin\theta &amp; cos\theta &amp; 0\0 &amp; 0 &amp; 0 &amp; 1 \end{matrix} \right]<br>$$</p>
+</li>
+<li><p>绕y轴旋转<br>$$<br>T&#x3D;\left[ \begin{matrix} cos\theta &amp; 0 &amp; -sin\theta &amp; 0\ 0 &amp; 1 &amp; 0 &amp; 0\ sin\theta &amp; 0 &amp; cos\theta &amp; 0\0 &amp; 0 &amp; 0 &amp; 1 \end{matrix} \right]<br>$$</p>
+</li>
+<li><p>绕z轴旋转<br>$$<br>T&#x3D;\left[ \begin{matrix} cos\theta &amp; sin\theta &amp; 0 &amp; 0\ -sin\theta &amp; cos\theta &amp; 0 &amp; 0\ 0 &amp; 0 &amp; 1 &amp; 0\0 &amp; 0 &amp; 0 &amp; 1 \end{matrix} \right]<br>$$</p>
+</li>
+</ol>
+</li>
+<li><p>错切变化</p>
+<p>共有6种，变换矩阵易得，就不多赘述</p>
+<ol>
+<li>沿x关于y错切</li>
+<li>沿x关于z错切</li>
+<li>沿y关于x错切</li>
+<li>沿y关于z错切</li>
+<li>沿z关于x错切</li>
+<li>沿z关于y错切</li>
+</ol>
+</li>
+</ol>
+<h4 id="5-3-3-三维图形的组合变换"><a href="#5-3-3-三维图形的组合变换" class="headerlink" title="5.3.3 三维图形的组合变换"></a>5.3.3 三维图形的组合变换</h4><p>绕任意轴的旋转变换矩阵</p>
+<p>将旋转轴变换到某个坐标轴，然后执行关于坐标轴的旋转变换，然后还原旋转轴</p>
+<h3 id="5-4-投影变换"><a href="#5-4-投影变换" class="headerlink" title="5.4 投影变换"></a>5.4 投影变换</h3><h4 id="5-4-1-投影变换的分类"><a href="#5-4-1-投影变换的分类" class="headerlink" title="5.4.1 投影变换的分类"></a>5.4.1 投影变换的分类</h4><blockquote>
+<p>平面几何投影：从三维到二维的投影</p>
+</blockquote>
+<p>按照投影中心距离投影平面的距离，可分为以下两种投影：</p>
+<ol>
+<li>透视投影：投影中心距离投影平面的距离有限</li>
+<li>平行投影：投影中心距离投影平面无限远</li>
+</ol>
+<h4 id="5-4-2-平行投影"><a href="#5-4-2-平行投影" class="headerlink" title="5.4.2 平行投影"></a>5.4.2 平行投影</h4><h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ol>
+<li>不具有透视缩小性，能精确地反应物体地实际尺寸</li>
+<li>平行线地平行投影仍为平行线</li>
+</ol>
+<h5 id="正平行投影和斜平行投影"><a href="#正平行投影和斜平行投影" class="headerlink" title="正平行投影和斜平行投影"></a>正平行投影和斜平行投影</h5><p>正平行投影：投影线垂直于投影平面</p>
+<ol>
+<li>三视图</li>
+<li>正轴测投影</li>
+</ol>
+<p>斜平行投影：投影线不垂直于投影平面</p>
+<h5 id="三视图"><a href="#三视图" class="headerlink" title="三视图"></a>三视图</h5><p> 当投影平面与某一坐标轴垂直时，得到的投影为三视图</p>
+<p>按照投影平面与不同的坐标轴垂直，三视图可以分为：</p>
+<ol>
+<li>主视图（正视图）：投影平面与y轴垂直</li>
+<li>俯视图：投影平面与z轴垂直</li>
+<li>侧视图：投影平面与x轴垂直</li>
+</ol>
+<h5 id="正轴侧投影"><a href="#正轴侧投影" class="headerlink" title="正轴侧投影"></a>正轴侧投影</h5><p>先绕y轴逆时针旋转一定角度，然后绕x轴逆时针旋转一定角度，然后对xOy面投影 </p>
+<ol>
+<li>正等轴测投影：投影平面与3个坐标轴之间的夹角都相等，三个坐标轴的单位向量投影之后相等</li>
+<li>正二轴测投影：投影平面与2个坐标轴之间的夹角都相等，三个坐标轴的单位向量投影之后只有两个相等</li>
+<li>正三轴测投影：投影平面与3个坐标轴之间的夹角都不相等，三个坐标轴的单位向量投影之后都不相等</li>
+</ol>
+<h4 id="5-4-3-透视投影"><a href="#5-4-3-透视投影" class="headerlink" title="5.4.3 透视投影"></a>5.4.3 透视投影</h4><ol>
+<li>一点透视：投影平面于投影对象所在坐标系的一个坐标平面平行</li>
+<li>两点透视：投影平面于投影对象所在坐标系的一个坐标轴平行</li>
+<li>三点透视：投影平面于投影对象所在坐标系的3个坐标轴都不平行</li>
+</ol>
+<h3 id="5-5-二维线段裁剪"><a href="#5-5-二维线段裁剪" class="headerlink" title="5.5 二维线段裁剪"></a>5.5 二维线段裁剪</h3><h4 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h4><ol>
+<li>按照裁剪窗口的形状不同：<ol>
+<li>矩形窗口裁剪</li>
+<li>圆形窗口裁剪</li>
+<li>一般多边形窗口裁剪</li>
+</ol>
+</li>
+<li>按照裁剪对象的不同：<ol>
+<li>线段裁剪</li>
+<li>字符裁剪</li>
+<li>多边形裁剪</li>
+<li>曲线裁剪</li>
+</ol>
+</li>
+</ol>
+<h4 id="策略："><a href="#策略：" class="headerlink" title="策略："></a>策略：</h4><ol>
+<li>按照图形裁剪与窗口——视图区变换的先后顺序：<ol>
+<li>先裁剪后变换</li>
+<li>先变换后裁剪</li>
+</ol>
+</li>
+<li>按照图形生成与裁剪的先后顺序：<ol>
+<li>先生成后裁剪</li>
+<li>先裁剪后生成</li>
+</ol>
+</li>
+</ol>
+<h4 id="5-5-1-Cohen-Sutherland裁剪算法"><a href="#5-5-1-Cohen-Sutherland裁剪算法" class="headerlink" title="5.5.1 Cohen-Sutherland裁剪算法"></a>5.5.1 Cohen-Sutherland裁剪算法</h4><p>通过对窗口以及窗口之外的区域进行编码，从而快速地判断端点的位置</p>
+<h4 id="5-5-2-中点分割裁剪算法"><a href="#5-5-2-中点分割裁剪算法" class="headerlink" title="5.5.2 中点分割裁剪算法"></a>5.5.2 中点分割裁剪算法</h4><h4 id="5-5-3-Liang-Barsky裁剪算法"><a href="#5-5-3-Liang-Barsky裁剪算法" class="headerlink" title="5.5.3 Liang-Barsky裁剪算法"></a>5.5.3 Liang-Barsky裁剪算法</h4><h3 id="5-6-多边形的裁剪"><a href="#5-6-多边形的裁剪" class="headerlink" title="5.6 多边形的裁剪"></a>5.6 多边形的裁剪</h3><h4 id="5-6-1-Sutherland-Hodgman算法（逐边裁剪算法-）"><a href="#5-6-1-Sutherland-Hodgman算法（逐边裁剪算法-）" class="headerlink" title="5.6.1 Sutherland-Hodgman算法（逐边裁剪算法 ）"></a>5.6.1 Sutherland-Hodgman算法（逐边裁剪算法 ）</h4><p>通过用窗口的各条边线逐一对多边形进行裁剪来完成对多边形的裁剪</p>
+<h4 id="5-6-2-Weiler-Atherton算法（重点）"><a href="#5-6-2-Weiler-Atherton算法（重点）" class="headerlink" title="5.6.2 Weiler-Atherton算法（重点）"></a>5.6.2 Weiler-Atherton算法（重点）</h4><p>见作业题，考试很可能考</p>
+<h5 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h5><p>裁剪多边形（CP）：称裁剪窗口为裁剪多边形</p>
+<p>主多边形（SP）：被裁剪的多边形称为主多边形</p>
+<p>多边形外部取顺时针方向，内部取逆时针方向</p>
+<p>进点：主多边形进入窗口的交点</p>
+<p>出点：主多边形离开窗口的交点</p>
+<p>对SP和CP的交点标记进点和出点：实心表示进点，空心表示出点</p>
+<h5 id="基本思想-3"><a href="#基本思想-3" class="headerlink" title="基本思想"></a>基本思想</h5><p>从SP的某个进点出发，按照SP表查找下一个交点，若是出点；则转向CP表的该点，在CP表中查找下一个交点，若是进点，则返回SP表，继续查找下一个交点；如此往复。直至在SP表中找不到进点</p>
+<p>CP表与SP表是通过顶点和交点序列构造的环形列表</p>
+<h2 id="6-实体几何造型基础"><a href="#6-实体几何造型基础" class="headerlink" title="6. 实体几何造型基础"></a>6. 实体几何造型基础</h2><h3 id="6-1-欧拉公式"><a href="#6-1-欧拉公式" class="headerlink" title="6.1 欧拉公式"></a>6.1 欧拉公式</h3><p>v-e+f&#x3D;2</p>
+<p>其中v为顶点数，e为边数，f为面数</p>
+<h3 id="6-2-广义欧拉公式"><a href="#6-2-广义欧拉公式" class="headerlink" title="6.2 广义欧拉公式"></a>6.2 广义欧拉公式</h3><p>v-e+f-r&#x3D;2(s-h)</p>
+<p>r为形体表面上的内孔总数，h为贯穿形体的孔洞数，s为形体非连通部分的总数</p>
+<h2 id="7-自然景物模拟与分形艺术"><a href="#7-自然景物模拟与分形艺术" class="headerlink" title="7. 自然景物模拟与分形艺术"></a>7. 自然景物模拟与分形艺术</h2><h3 id="7-1-分形维数的计算"><a href="#7-1-分形维数的计算" class="headerlink" title="7.1 分形维数的计算"></a>7.1 分形维数的计算</h3><h4 id="1-从放大的角度"><a href="#1-从放大的角度" class="headerlink" title="1. 从放大的角度"></a>1. 从放大的角度</h4><p>$D&#x3D;\frac{lnM}{lnB}$</p>
+<p>其中D表示对象的维数，M表示总个数，B表示放大的倍数</p>
+<h4 id="2-从细分的角度"><a href="#2-从细分的角度" class="headerlink" title="2. 从细分的角度"></a>2. 从细分的角度</h4><p>$D&#x3D;\frac{lnN}{ln(1&#x2F;S)}$</p>
+<p>N为每一步细分的数目，S为细分时的放缩倍数</p>
+<h3 id="7-2-分形图形的生成方法（能够说出各方法的名称）"><a href="#7-2-分形图形的生成方法（能够说出各方法的名称）" class="headerlink" title="7.2 分形图形的生成方法（能够说出各方法的名称）"></a>7.2 分形图形的生成方法（能够说出各方法的名称）</h3><ul>
+<li>随机插值模型</li>
+<li>迭代函数系统</li>
+<li>L系统</li>
+<li>粒子系统</li>
+</ul>
+<h2 id="8-真实感图形显示"><a href="#8-真实感图形显示" class="headerlink" title="8. 真实感图形显示"></a>8. 真实感图形显示</h2><h3 id="8-2-取景变换"><a href="#8-2-取景变换" class="headerlink" title="8.2 取景变换"></a>8.2 取景变换</h3><p>教材P218</p>
+<h4 id="1-场景坐标系"><a href="#1-场景坐标系" class="headerlink" title="1. 场景坐标系"></a>1. 场景坐标系</h4><p>包括场景的局部坐标系和场景的世界坐标系</p>
+<h4 id="2-观察坐标系"><a href="#2-观察坐标系" class="headerlink" title="2. 观察坐标系"></a>2. 观察坐标系</h4><p>观察坐标系也称为摄像机坐标系，或者视点坐标系</p>
+<h4 id="3-取景变换"><a href="#3-取景变换" class="headerlink" title="3. 取景变换"></a>3. 取景变换</h4><p>在将物体投影到观察平面之前，须将场景坐标系中的点转换到观察坐标系中</p>
+<h3 id="8-3-隐藏面的消除（列举算法名称，5种以上）"><a href="#8-3-隐藏面的消除（列举算法名称，5种以上）" class="headerlink" title="8.3 隐藏面的消除（列举算法名称，5种以上）"></a>8.3 隐藏面的消除（列举算法名称，5种以上）</h3><ul>
+<li>背面剔除算法</li>
+<li>画家算法</li>
+<li>Weiler-Atherton算法</li>
+<li>BSP树算法</li>
+<li>深度缓冲器算法</li>
+<li>扫描线Z缓冲器算法</li>
+<li>区间扫描线算法</li>
+<li>Warnock算法</li>
+<li>光线投射算法</li>
+</ul>
+<h3 id="8-4-阴影生成（知道阴影的名称及其概念）"><a href="#8-4-阴影生成（知道阴影的名称及其概念）" class="headerlink" title="8.4 阴影生成（知道阴影的名称及其概念）"></a>8.4 阴影生成（知道阴影的名称及其概念）</h3><h4 id="阴影的两个组成部分"><a href="#阴影的两个组成部分" class="headerlink" title="阴影的两个组成部分"></a>阴影的两个组成部分</h4><ul>
+<li><font color = "gold">本影</font>：景物表面上没有被光源直接照射的区域，通常呈现为全黑的轮廓分明的区域</li>
+<li><font color='gold'>半影</font>：为景物表面上被某些特定光源直接照射但并非被所有特定光源直接照射的区域，或者说是可接收到分布光源的部分光线照射的区域，半影通常位于本影周围，呈现为半明半暗的区域。</li>
+</ul>
+<h4 id="产生本影的两种情形"><a href="#产生本影的两种情形" class="headerlink" title="产生本影的两种情形"></a>产生本影的两种情形</h4><ul>
+<li><font color='gold'>自身阴影</font>：因物体自身的遮挡而使光线照射不到它上面的某些课件面即自身阴影面（通过背面剔除方法求出）</li>
+<li><font color='gold'>投射阴影</font>：因不透明物体遮挡光线使得场景种位于该物体后面的物体或区域受不到光照射而形成的投射阴影。</li>
+</ul>
+<h3 id="8-5-基本光照模型（列举出模型的名称）"><a href="#8-5-基本光照模型（列举出模型的名称）" class="headerlink" title="8.5 基本光照模型（列举出模型的名称）"></a>8.5 基本光照模型（列举出模型的名称）</h3><ul>
+<li>环境光照模型</li>
+<li>Lambert漫反射模型</li>
+<li>Phong镜面反射模型</li>
+<li>简单的透明模型</li>
+</ul>
+<h3 id="8-6-纹理分类"><a href="#8-6-纹理分类" class="headerlink" title="8.6 纹理分类"></a>8.6 纹理分类</h3><p>根据纹理的定义域不同</p>
+<ul>
+<li>二维纹理</li>
+<li>三维纹理</li>
+</ul>
+<p>根据纹理的表现形式不同</p>
+<ul>
+<li>颜色纹理</li>
+<li>几何纹理</li>
+<li>过程纹理</li>
+</ul>
+<h2 id="9-计算机动画"><a href="#9-计算机动画" class="headerlink" title="9. 计算机动画"></a>9. 计算机动画</h2><h3 id="9-4-计算机动画中的常用技术（能够列举各种技术）"><a href="#9-4-计算机动画中的常用技术（能够列举各种技术）" class="headerlink" title="9.4 计算机动画中的常用技术（能够列举各种技术）"></a>9.4 计算机动画中的常用技术（能够列举各种技术）</h3><ul>
+<li>关键帧技术</li>
+<li>样条驱动技术</li>
+<li>Morphing和FFD变形技术</li>
+<li>双缓冲技术</li>
+<li>其他动画技术<ul>
+<li>过程动画</li>
+<li>关节动画和人体动画</li>
+<li>基于物理模型的动画</li>
+</ul>
+</li>
+</ul>
 <h1 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h1><h2 id="1-三角形重心的坐标"><a href="#1-三角形重心的坐标" class="headerlink" title="1.三角形重心的坐标"></a>1.三角形重心的坐标</h2><p>已知三角形的三个顶点坐标$(x_1,y_1),(x_2,y_2),(x_3,y_3)$，则三角形的重心坐标为$(\frac{x_1+x_2+x_3}{3},\frac{y_1+y_2+y_3}{3})$</p>
 
 	</div>
