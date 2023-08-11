@@ -17,8 +17,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://learnopengl-cn.github.io/img/01/04/pipeline.png">
 <meta property="og:image" content="https://learnopengl-cn.github.io/img/01/06/mipmaps.png">
+<meta property="og:image" content="https://learnopengl-cn.github.io/img/01/08/coordinate_systems.png">
 <meta property="article:published_time" content="2023-06-30T16:23:29.519Z">
-<meta property="article:modified_time" content="2023-07-01T03:04:37.554Z">
+<meta property="article:modified_time" content="2023-07-26T08:23:28.689Z">
 <meta property="article:author" content="Origin_OvO">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://learnopengl-cn.github.io/img/01/04/pipeline.png">
@@ -505,7 +506,7 @@
 							<nav class="site-state">
 								<div class="site-state-item site-state-posts">
 									<a href="/archives">
-										<span class="site-state-item-count">78</span>
+										<span class="site-state-item-count">82</span>
 										<span class="site-state-item-name">文章</span>
 									</a>
 								</div>
@@ -611,7 +612,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-time">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<time title="发布于 2023-7-1 0:23:29 | 编辑于 2023-7-1 11:04:37">2023-7-1 0:23
+							<time title="发布于 2023-7-1 0:23:29 | 编辑于 2023-7-26 16:23:28">2023-7-1 0:23
 							</time>
 						</div>
 					
@@ -630,7 +631,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-words">
 							<i class="fa fa-file-word-o" aria-hidden="true"></i>
-							3.3k 字
+							4k 字
 						</div>
 					
 						
@@ -638,7 +639,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-readingtime">
 							<i class="fa fa-hourglass-end" aria-hidden="true"></i>
-							13 分钟
+							16 分钟
 						</div>
 					
 		</div>
@@ -742,13 +743,32 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">glVertexAttribPointer</span>(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">3</span> * <span class="built_in">sizeof</span>(<span class="type">float</span>), (<span class="type">void</span>*)<span class="number">0</span>);</span><br><span class="line"><span class="built_in">glEnableVertexAttribArray</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
 
 <p>通过glVertexAttribPointer函数来设置输入的顶点数据的含义。</p>
-<p>其中第一个参数表示我们想要配置的顶点是哪个。</p>
-<p>第二个参数表示顶点数据的个数，由于这里我们只传入了顶点的三维位置坐标，因此是3</p>
-<p>第三个参数明确了所传入的顶点数据的类似。</p>
-<p>第四个参数设置数据是否需要归一化。</p>
-<p>第五个参数表示数据的其实位置。</p>
+<ol>
+<li><p>其中第一个参数表示我们想要配置的顶点是哪个，与着色器中的location对应。</p>
+</li>
+<li><p>第二个参数表示顶点数据的个数，由于这里我们只传入了顶点的三维位置坐标，因此是3</p>
+</li>
+<li><p>第三个参数明确了所传入的顶点数据的类似。</p>
+</li>
+<li><p>第四个参数设置数据是否需要归一化。</p>
+</li>
+<li><p>第五个参数表示数据的起始位置的偏移量</p>
+</li>
+</ol>
 <p>glEnableVertexAttribArray，将顶点数据变得可用，所传入的参数和glVertexAttribPointer的第一个参数的含义一致。</p>
-<h2 id="3-Shader"><a href="#3-Shader" class="headerlink" title="3. Shader"></a>3. Shader</h2><h3 id="uniform"><a href="#uniform" class="headerlink" title="uniform"></a>uniform</h3><p>uniform类型可以支持通过从CPU应用向GPU应用发送数据。</p>
+<h3 id="VBO与VAO使用的基本流程"><a href="#VBO与VAO使用的基本流程" class="headerlink" title="VBO与VAO使用的基本流程"></a>VBO与VAO使用的基本流程</h3><ul>
+<li><p>创建VBO和VAO</p>
+</li>
+<li><p>然后将其与对应的区域进行绑定</p>
+</li>
+<li><p>将顶点数据传入缓冲区</p>
+</li>
+<li><p>然后定义数据的含义</p>
+</li>
+</ul>
+<h2 id="3-Shader"><a href="#3-Shader" class="headerlink" title="3. Shader"></a>3. Shader</h2><h3 id="uniform"><a href="#uniform" class="headerlink" title="uniform"></a>uniform</h3><p>uniform类型可以支持通过从CPU应用向GPU应用发送数据。即可以通过进程（运行中的程序）向GPU发送数据。uniform是全局的，因此必须是唯一的。</p>
+<p>首先获取uniform变量的位置，通过调用glGetUniformLocation函数</p>
+<p>通过调用glUniform系列函数来设置uniform变量的值</p>
 <h3 id="shader"><a href="#shader" class="headerlink" title="shader"></a>shader</h3><p>in用于定义数据的输入，out用于定义数据的输出，可以在顶点着色器定义输出，然后把该输出作为片段着色器的输入。定义方式为：in 类型 标识符。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;#version 330 core\n&quot;</span>  <span class="comment">//  顶点着色器</span></span><br><span class="line"><span class="string">&quot;layout (location = 0) in vec3 aPos;\n&quot;</span></span><br><span class="line"><span class="string">&quot;layout (location = 1) in vec3 aColor;\n&quot;</span></span><br><span class="line"><span class="string">&quot;out vec3 ourColor;\n&quot;</span></span><br><span class="line"><span class="string">&quot;\n&quot;</span></span><br><span class="line"><span class="string">&quot;void main()\n&quot;</span></span><br><span class="line"><span class="string">&quot;&#123;\n&quot;</span></span><br><span class="line"><span class="string">&quot;    gl_Position = vec4(aPos, 1.0);\n&quot;</span></span><br><span class="line"><span class="string">&quot;    ourColor = aColor;\n&quot;</span></span><br><span class="line"><span class="string">&quot;&#125;\0&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;#version 330 core\n&quot;</span>  <span class="comment">//  片段着色器</span></span><br><span class="line"><span class="string">&quot;out vec4 FragColor;\n&quot;</span></span><br><span class="line"><span class="string">&quot;in vec3 ourColor;&quot;</span></span><br><span class="line"><span class="string">&quot;\n&quot;</span></span><br><span class="line"><span class="string">&quot;void main()\n&quot;</span></span><br><span class="line"><span class="string">&quot;&#123;\n&quot;</span></span><br><span class="line"><span class="string">&quot;    FragColor = vec4(ourColor, 1.0);\n&quot;</span></span><br><span class="line"><span class="string">&quot;&#125;\0&quot;</span>;</span><br></pre></td></tr></table></figure>
 
@@ -783,14 +803,8 @@
 </tbody></table>
 <p>通过<code>glTexParameter*</code>设置纹理的参数，*为函数的后缀，由于opengl核心是c库，所以不支持重载，因此用这种函数后缀的方式，来表示所传入的不同参数类型。</p>
 <h3 id="纹理过滤"><a href="#纹理过滤" class="headerlink" title="纹理过滤"></a>纹理过滤</h3><p>用于指明如何将纹理像素映射到纹理坐标。最重要的两种方式为GL_NEAREST和GL_LINEAER，当进行图像的放大或缩小操作时，可以设置纹理过滤的选项。</p>
-<ol>
-<li><p>GL_NEAREST(邻近过滤)</p>
-<p>选择中心点最接近纹理坐标的那个纹理像素作为样本颜色。该过滤方法，锯齿较为严重。</p>
-</li>
-<li><p>GL_LINEAER(线性过滤)</p>
-<p>通过线性插值（比如双线性插值方法），近似计算出该坐标的对应的颜色。该方法显示的图像变化平滑，看起来比较模糊。</p>
-</li>
-</ol>
+<h4 id="1-GL-NEAREST-邻近过滤"><a href="#1-GL-NEAREST-邻近过滤" class="headerlink" title="1. GL_NEAREST(邻近过滤)"></a>1. GL_NEAREST(邻近过滤)</h4><p>选择中心点最接近纹理坐标的那个纹理像素作为样本颜色。该过滤方法，锯齿较为严重。</p>
+<h4 id="2-GL-LINEAER-线性过滤"><a href="#2-GL-LINEAER-线性过滤" class="headerlink" title="2. GL_LINEAER(线性过滤)"></a>2. GL_LINEAER(线性过滤)</h4><p>通过线性插值（比如双线性插值方法），近似计算出该坐标的对应的颜色。该方法显示的图像变化平滑，看起来比较模糊。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">glTexParameteri</span>(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);</span><br><span class="line"><span class="built_in">glTexParameteri</span>(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);</span><br></pre></td></tr></table></figure>
 
 <h3 id="多级渐远纹理（MipMap）"><a href="#多级渐远纹理（MipMap）" class="headerlink" title="多级渐远纹理（MipMap）"></a>多级渐远纹理（MipMap）</h3><p>用于处理远处和近处的纹理分辨率不匹配的问题，远处的场景，在很小的片段里可能包含了大面积的纹理信息。简单来说，该纹理就是一系列纹理图像，后一个纹理图像的是前一个的二分之一。opengl会选择最适合物体距离的纹理图像来进行纹理映射。</p>
@@ -826,6 +840,30 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">glTexParameteri</span>(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);</span><br><span class="line"><span class="built_in">glTexParameteri</span>(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);</span><br></pre></td></tr></table></figure>
 
 <h3 id="纹理单元"><a href="#纹理单元" class="headerlink" title="纹理单元"></a>纹理单元</h3><p>用于存储纹理的位置值，不同的纹理有不同的位置值，默认为0，位置值是0的纹理单元是默认的激活纹理单元，不需要手动去激活。</p>
+<h2 id="5-变换"><a href="#5-变换" class="headerlink" title="5. 变换"></a>5. 变换</h2><h3 id="齐次坐标"><a href="#齐次坐标" class="headerlink" title="齐次坐标"></a>齐次坐标</h3><p>通过齐次坐标可以统一平移变换的变换矩阵，使得其表示形式一致。</p>
+<h3 id="GLM"><a href="#GLM" class="headerlink" title="GLM"></a>GLM</h3><p>OpenGL Mathmatics</p>
+<p>语法规则与glsl类似</p>
+<h3 id="在程序中设置uniform的matrix的值"><a href="#在程序中设置uniform的matrix的值" class="headerlink" title="在程序中设置uniform的matrix的值"></a>在程序中设置uniform的matrix的值</h3><p>使用glUniformMatrix4fv，第一个参数为uniform的location，第二个参数表示矩阵的个数，第三个参数表示是否需要对矩阵进行转置操作，第四个参数为传入数据的位置</p>
+<h3 id="glm生成变换矩阵"><a href="#glm生成变换矩阵" class="headerlink" title="glm生成变换矩阵"></a>glm生成变换矩阵</h3><p>0.9.9版本后，矩阵的默认构造函数会生成一个零矩阵而不是一个单位矩阵，需要通过以下语句来生成一个单位矩阵。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">glm::mat4 trans = glm::<span class="built_in">mat4</span>(<span class="number">1.0f</span>);</span><br><span class="line"><span class="function">glm::mat4 <span class="title">trans</span><span class="params">(<span class="number">1.0f</span>)</span></span>;  <span class="comment">//  或者这样</span></span><br></pre></td></tr></table></figure>
+
+<p>对于组合变换，按其定义的顺序不断对变换矩阵进行右乘，比如如下矩阵</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">glm::mat4 <span class="title">transform</span><span class="params">(<span class="number">1.0f</span>)</span></span>;</span><br><span class="line">transform = glm::<span class="built_in">translate</span>(transform, glm::<span class="built_in">vec3</span>(<span class="number">0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>));</span><br><span class="line">transform = glm::<span class="built_in">rotate</span>(transform, (<span class="type">float</span>)<span class="built_in">glfwGetTime</span>(), glm::<span class="built_in">vec3</span>(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>));</span><br></pre></td></tr></table></figure>
+
+<p>首先生成是一个平移变换矩阵$T_1$，然后是一个旋转变换矩阵$T_2$，那么最终的变换矩阵就是$T&#x3D;T_1*T_2$，由于变换时是将变换矩阵右乘，所以实际上是先进行旋转，然后再进行平移</p>
+<h2 id="6-坐标系统"><a href="#6-坐标系统" class="headerlink" title="6. 坐标系统"></a>6. 坐标系统</h2><h3 id="NDC-标准化设备坐标"><a href="#NDC-标准化设备坐标" class="headerlink" title="NDC(标准化设备坐标)"></a>NDC(标准化设备坐标)</h3><p>可见的顶点需要转化成标准化设备坐标，这样才能被投射到屏幕区域，需要满足x,y,z坐标都在[-1,1]</p>
+<h3 id="MVP变换"><a href="#MVP变换" class="headerlink" title="MVP变换"></a>MVP变换</h3><p>要把物体投射到屏幕空间中，通常需要用到3个变换矩阵，模型(Model)、观察(View)、投影(Projection)</p>
+<p><img class="lazyload lazyload-style-1" src="data:image/svg+xml;base64,PCEtLUFyZ29uTG9hZGluZy0tPgo8c3ZnIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmZmZmMDAiPjxnPjwvZz4KPC9zdmc+"  data-original="https://learnopengl-cn.github.io/img/01/08/coordinate_systems.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" alt="坐标系变换"></p>
+
+<h3 id="局部空间"><a href="#局部空间" class="headerlink" title="局部空间"></a>局部空间</h3><p>物体最开始所在的空间</p>
+<h3 id="世界空间"><a href="#世界空间" class="headerlink" title="世界空间"></a>世界空间</h3><p>相对于游戏世界的坐标系</p>
+<h3 id="观察空间"><a href="#观察空间" class="headerlink" title="观察空间"></a>观察空间</h3><p>摄像机所拍摄到的空间，观察变换矩阵相当于移动摄像机</p>
+<h3 id="裁剪空间"><a href="#裁剪空间" class="headerlink" title="裁剪空间"></a>裁剪空间</h3><p>通过限制一个空间范围，在范围之外的顶点都会被裁剪掉</p>
+<p>整个变换过程可以表示为如下的式子</p>
+<p>$V_{clip}&#x3D;M_{projection}⋅M_{view}⋅M_{model}⋅V_{local}$</p>
+<h3 id="Z-Buffer"><a href="#Z-Buffer" class="headerlink" title="Z Buffer"></a>Z Buffer</h3><p>深度缓冲，用于展示出物体之间的遮挡关系(occlusion)</p>
+<h2 id="7-摄像机"><a href="#7-摄像机" class="headerlink" title="7. 摄像机"></a>7. 摄像机</h2><h3 id="摄像机位置"><a href="#摄像机位置" class="headerlink" title="摄像机位置"></a>摄像机位置</h3><p>定义摄像机在世界坐标系中的位置</p>
+<h3 id="摄像机方向"><a href="#摄像机方向" class="headerlink" title="摄像机方向"></a>摄像机方向</h3><p>摄像机指向的方向</p>
 
 	</div>
 

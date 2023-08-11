@@ -16,7 +16,7 @@
 <meta property="og:description" content="编译原理1. 编译概述1.1 翻译程序和编译程序翻译程序：是指将用一种语言编写的程序翻译成与之等价的另一种程序的程序 编译程序：源语言是高级语言，目标语言是汇编语言或机器语言的低级语言，这样的翻译程序称为编译程序，即编译程序将高级语言所编写的源程序翻译成等价的机器语言或汇编语言的目标程序 源程序的生命周期 采用编译方式在计算机上执行用高级语言编写的程序，需分阶段进行，一般分为两大阶段，即编译阶段和">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-25T13:27:54.893Z">
-<meta property="article:modified_time" content="2023-06-27T11:28:18.353Z">
+<meta property="article:modified_time" content="2023-07-03T05:15:04.918Z">
 <meta property="article:author" content="Origin_OvO">
 <meta name="twitter:card" content="summary">
 
@@ -502,7 +502,7 @@
 							<nav class="site-state">
 								<div class="site-state-item site-state-posts">
 									<a href="/archives">
-										<span class="site-state-item-count">78</span>
+										<span class="site-state-item-count">82</span>
 										<span class="site-state-item-name">文章</span>
 									</a>
 								</div>
@@ -608,7 +608,7 @@
 						
 						<div class="post-meta-detail post-meta-detail-time">
 							<i class="fa fa-clock-o" aria-hidden="true"></i>
-							<time title="发布于 2023-5-25 21:27:54 | 编辑于 2023-6-27 19:28:18">2023-5-25 21:27
+							<time title="发布于 2023-5-25 21:27:54 | 编辑于 2023-7-3 13:15:04">2023-5-25 21:27
 							</time>
 						</div>
 					
@@ -712,7 +712,7 @@
 <h4 id="2-3-3语言的形式定义"><a href="#2-3-3语言的形式定义" class="headerlink" title="2.3.3语言的形式定义"></a>2.3.3语言的形式定义</h4><h5 id="1-直接推导"><a href="#1-直接推导" class="headerlink" title="1.直接推导"></a>1.直接推导</h5><p>由一个符号串推导出另一个符号串， 且仅使用一次规则的过程。推导符号为$ \Rightarrow$</p>
 <p>，注意与规则符号$\rightarrow$区分</p>
 <h5 id="2-推导"><a href="#2-推导" class="headerlink" title="2.推导"></a>2.推导</h5><p>一个符号串经过一次或若干次规则得到另一个符号串的过程，记为$a_0 \mathop{\Rightarrow}\limits^+ a_n$，注意这里至少要经过一次直接推导</p>
-<h5 id="3-广义推导"><a href="#3-广义推导" class="headerlink" title="3.广义推导"></a>3.广义推导</h5><p>$a_0\mathop\Rightarrow\limits^* a_n$，表示$a_0$经过0步或若干步直接推导，得到$a_n$，即$a_0&#x3D;a_n或者a_0\mathop\Rightarrow\limits^+a_n$</p>
+<h5 id="3-广义推导"><a href="#3-广义推导" class="headerlink" title="3.广义推导"></a>3.广义推导</h5><p>$a_ 0\mathop\Rightarrow\limits^* a_n$，表示$a_0$经过0步或若干步直接推导，得到$a_n$，即$a_0&#x3D;a_n或者a_0\mathop\Rightarrow\limits^+a_n$</p>
 <h5 id="4-句型和句子"><a href="#4-句型和句子" class="headerlink" title="4.句型和句子"></a>4.句型和句子</h5><p>假设有文法G[S]，如果$S\mathop\Rightarrow\limits^<em>x，x\in (V_N \cup V_T)^</em>$，则称x为文法G[S]的句型，即句型包括由开始符经过广义推导产生的所有符号串；如果有$S\mathop\Rightarrow\limits^<em>x, x\in V_T^</em>$，则称x是文法G[S]的句子，即句子仅仅由终结符号组成的符号串。由此可以看出句子是句型的子集。</p>
 <h5 id="5-语言"><a href="#5-语言" class="headerlink" title="5.语言"></a>5.语言</h5><p>由文法G[S]产生的所有句子的集合即为语言。</p>
 <h4 id="2-3-4规范推导和规范规约"><a href="#2-3-4规范推导和规范规约" class="headerlink" title="2.3.4规范推导和规范规约"></a>2.3.4规范推导和规范规约</h4><h5 id="规范推导"><a href="#规范推导" class="headerlink" title="规范推导"></a>规范推导</h5><p>最左推导：对于推导序列中的每一步直接推导$a\Rightarrow b$，都是对a中最左边的非终结符进行替换</p>
