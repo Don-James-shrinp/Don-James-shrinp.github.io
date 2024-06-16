@@ -7,14 +7,33 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
-
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the site in the jekyll/builder container
-      run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+      # 检出仓库代码
+      - uses: actions/checkout@v4
+
+      # 设置 Ruby 环境
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1 # 确保使用与 Jekyll 兼容的 Ruby 版本
+
+      # 安装依赖项
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      # 构建 Jekyll 站点
+      - name: Build the site
+        run: bundle exec jekyll build
+
+      # 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
